@@ -7,13 +7,16 @@
     align-items: center;
     justify-content: center;
     border: 1px solid red;
-    background-image: url(./src/assets/recruitment-page/landing/web\ member\ recrut-03.png);
+    /* background-image: url(./src/assets/recruitment-page/landing/web-member-recrut-03.png); */
+    background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-03.png);
     background-size: cover;
     background-position: center;
 }
 
 #form{
-    background-image: url(./src/assets/recruitment-page/landing/web\ member\ recrut-28.png);
+    /* background-image: url(./src/assets/recruitment-page/landing/web-member-recrut-28.png); */
+    background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-28.png);
+
     background-size: cover;
     display: flex;
     flex-direction: column;

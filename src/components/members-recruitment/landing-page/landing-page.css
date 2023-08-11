@@ -26,7 +26,8 @@
     object-fit: cover;
 }
 #foreground {
-    background-image: url(./src/assets/recruitment-page/landing/web\ member\ recrut-08.png);
+    /* background-image: url(./src/assets/recruitment-page/landing/web-member-recrut-08.png); */
+    background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-08.png);
     background-size: cover;
     /* position: absolute;
     z-index: 2;

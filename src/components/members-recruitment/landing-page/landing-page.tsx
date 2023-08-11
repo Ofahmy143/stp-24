@@ -2,32 +2,32 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 // import styled from "styled-components";
 import "./landing-page.css";
-import pic1 from "../../../assets/recruitment-page/landing/web member recrut-07.png";
-import pic2 from "../../../assets/recruitment-page/landing/web member recrut-06.png";
-import pic3 from "../../../assets/recruitment-page/landing/web member recrut-05.png";
+import pic1 from "../../../assets/recruitment-page/landing/web-member-recrut-07.png";
+import pic2 from "../../../assets/recruitment-page/landing/web-member-recrut-06.png";
+import pic3 from "../../../assets/recruitment-page/landing/web-member-recrut-05.png";
 
 // Committee Title images
-import ER from "../../../assets/recruitment-page/landing/web member recrut00-06.png";
-import IR from "../../../assets/recruitment-page/landing/web member recrut00-07.png";
-import AC from "../../../assets/recruitment-page/landing/web member recrut00-08.png";
-import MM from "../../../assets/recruitment-page/landing/web member recrut00-09.png";
-import Events from "../../../assets/recruitment-page/landing/web member recrut00-10.png";
+import ER from "../../../assets/recruitment-page/landing/web-member-recrut00-06.png";
+import IR from "../../../assets/recruitment-page/landing/web-member-recrut00-07.png";
+import AC from "../../../assets/recruitment-page/landing/web-member-recrut00-08.png";
+import MM from "../../../assets/recruitment-page/landing/web-member-recrut00-09.png";
+import Events from "../../../assets/recruitment-page/landing/web-member-recrut00-10.png";
 
-// Subdivision Title images
-import TechnicalTeam from "../../../assets/recruitment-page/landing/web member recrut00-11.png";
-import PublicRelations from "../../../assets/recruitment-page/landing/web member recrut00-12.png";
-import BusinessDevelopment from "../../../assets/recruitment-page/landing/web member recrut00-13.png";
-import Logistics from "../../../assets/recruitment-page/landing/web member recrut00-14.png";
-import DCR from "../../../assets/recruitment-page/landing/web member recrut00-15.png";
-import HRandQC from "../../../assets/recruitment-page/landing/web member recrut00-16.png";
-import Juniors from "../../../assets/recruitment-page/landing/web member recrut00-17.png";
-import Freelancing from "../../../assets/recruitment-page/landing/web member recrut00-18.png";
-import Engineering from "../../../assets/recruitment-page/landing/web member recrut00-19.png";
-import SocialMedia from "../../../assets/recruitment-page/landing/web member recrut00-20.png";
-import Media from "../../../assets/recruitment-page/landing/web member recrut00-21.png";
-import Software from "../../../assets/recruitment-page/landing/web member recrut00-22.png";
-import GraphicDesign from "../../../assets/recruitment-page/landing/web member recrut00-23.png";
-import Podcast from "../../../assets/recruitment-page/landing/web member recrut00-22.png";
+// Subdivision Title image-
+import TechnicalTeam from "../../../assets/recruitment-page/landing/web-member-recrut00-11.png";
+import PublicRelations from "../../../assets/recruitment-page/landing/web-member-recrut00-12.png";
+import BusinessDevelopment from "../../../assets/recruitment-page/landing/web-member-recrut00-13.png";
+import Logistics from "../../../assets/recruitment-page/landing/web-member-recrut00-14.png";
+import DCR from "../../../assets/recruitment-page/landing/web-member-recrut00-15.png";
+import HRandQC from "../../../assets/recruitment-page/landing/web-member-recrut00-16.png";
+import Juniors from "../../../assets/recruitment-page/landing/web-member-recrut00-17.png";
+import Freelancing from "../../../assets/recruitment-page/landing/web-member-recrut00-18.png";
+import Engineering from "../../../assets/recruitment-page/landing/web-member-recrut00-19.png";
+import SocialMedia from "../../../assets/recruitment-page/landing/web-member-recrut00-20.png";
+import Media from "../../../assets/recruitment-page/landing/web-member-recrut00-21.png";
+import Software from "../../../assets/recruitment-page/landing/web-member-recrut00-22.png";
+import GraphicDesign from "../../../assets/recruitment-page/landing/web-member-recrut00-23.png";
+import Podcast from "../../../assets/recruitment-page/landing/web-member-recrut00-22.png";
 
 
 
