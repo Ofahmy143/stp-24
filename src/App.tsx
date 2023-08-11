@@ -1,7 +1,7 @@
 import "./App.css";
 import Form from "./components/members-recruitment/form/form";
 import LandingPage from "./components/members-recruitment/landing-page/landing-page";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
     return (
         <>
