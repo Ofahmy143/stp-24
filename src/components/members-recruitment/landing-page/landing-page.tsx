@@ -104,8 +104,8 @@ export function Committee({
             {/* <h1>Committee</h1> */}
             <img id="committee-title-img" src={committeeImg} alt="" />
             <div id="committee-cards">
-                {titles.map((title) => (
-                    <TheaterCard cardTitle={title} />
+                {titles.map((title: string, index: number) => (
+                    <TheaterCard cardTitle={title} key={index} />
                 ))}
             </div>
         </div>
