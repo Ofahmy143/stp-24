@@ -1,0 +1,143 @@
+#form-container{
+    height: 100vh;
+    /* display: grid;
+    place-items: center; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid red;
+    background-image: url(./src/assets/recruitment-page/landing/web\ member\ recrut-03.png);
+    background-size: cover;
+    background-position: center;
+}
+
+#form{
+    background-image: url(./src/assets/recruitment-page/landing/web\ member\ recrut-28.png);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+    padding: 20px;
+    border:5px dashed white;
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+
+}
+
+input[type="text"]{
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1em;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+textarea{
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 1em;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+
+/* SCQ */
+#choices{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#single-choice{
+    display: flex;
+    gap:5px;
+    align-items: center;
+}
+
+/* short answer */
+#short-answer-question{
+    /* border: 1px solid red; */
+}
+
+
+/* long answer */
+#essay-question{
+    /* border: 1px solid red; */
+}
+
+
+
+
+#essay-question textarea{
+    height: 100px;
+}
+
+
+/* Select question */
+#select-question select{
+    /* border: 1px solid red; */
+    border-radius: 5px;
+    width: calc(100%);
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+#buttons{
+    padding:20px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#buttons button{
+    width: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: brown;
+    border: 2px dashed white;
+    color: antiquewhite;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+    bottom: 0;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#buttons button:hover{
+    opacity: 0.9;
+    color: white;
+}
+
+#buttons button:focus{
+    animation: click 0.3s linear forwards;
+}
+
+@media screen and (max-width: 1200px) {
+    #form{
+        width: 60%;
+    }
+    #buttons{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #form{
+        width: 80%;
+    }
+    #buttons{
+        width: 80%;
+    }
+}
