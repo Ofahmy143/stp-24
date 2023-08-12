@@ -25,7 +25,7 @@ import Freelancing from "../../../assets/recruitment-page/landing/web-member-rec
 import Engineering from "../../../assets/recruitment-page/landing/web-member-recrut00-19.png";
 import SocialMedia from "../../../assets/recruitment-page/landing/web-member-recrut00-20.png";
 import Media from "../../../assets/recruitment-page/landing/web-member-recrut00-21.png";
-import Software from "../../../assets/recruitment-page/landing/web-member-recrut00-22.png";
+import Software from "../../../assets/recruitment-page/landing/web-member-recrut00-24.png";
 import GraphicDesign from "../../../assets/recruitment-page/landing/web-member-recrut00-23.png";
 import Podcast from "../../../assets/recruitment-page/landing/web-member-recrut00-22.png";
 import { jobDescription, specificJobDescription } from "./jobDescriptions";

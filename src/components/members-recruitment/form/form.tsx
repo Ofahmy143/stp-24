@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./form.css";
+import { useNavigate } from "react-router-dom";
 
 // type questionType = "short-answer" | "essay" | "mcq" | "scq";
 // type subChoices = {
@@ -282,6 +283,7 @@ function EssayQuestion({ question, name }: { question: string; name: string }) {
     );
 }
 function Form() {
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [err, setErr] = useState<boolean>(false);
     const [results, setResults] = useState<{
@@ -306,7 +308,7 @@ function Form() {
                 },
                 body: JSON.stringify(results),
             })
-            console.log(res);
+            navigate("/stp-24");
         }catch(err){
             console.log((err as Error).message);
         }
