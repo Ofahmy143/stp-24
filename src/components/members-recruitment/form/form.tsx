@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
     PageQuestion,
     questions,
@@ -11,6 +12,7 @@ import { ShortAnswerQuestion } from "./ShortAnswer/shortAnswerQuestion";
 import { EssayQuestion } from "./Essay/essayQuestion";
 import { SelectComponent } from "./Select/selectQuestion";
 import { useFormStore } from "../../../zustand/form/formStore";
+import { RecruitmentMember } from "./membersRecruitment";
 
 //TODO:: sucess and fail screens
 
@@ -63,6 +65,20 @@ function Form() {
         navigate("/stp-24");
     }
 
+    async function submitToDatabase(finalData: RecruitmentMember) {
+        try{
+            const response = await axios({
+                method: "post",
+                url: "https://stp-24.onrender.com/member-recruitment/",
+                data: finalData,
+            })
+
+            console.log(response.data)
+
+        }catch(err){
+            console.log((err as Error).message)
+        }
+    }
     function handlePageBackward() {
         if (extraQuestions) {
             setActiveSubmit(false);
@@ -90,6 +106,7 @@ function Form() {
                 setExtraQuestions(false);
                 setHideForm(true);
                 setSucess(true);
+                submitToDatabase(FinalForm);
             }
         } else {
             if (!validatePage(mappedExtraQuestions)) {
@@ -106,6 +123,7 @@ function Form() {
                 setExtraQuestions(false);
                 setHideForm(true);
                 setSucess(true);
+                submitToDatabase(FinalForm);
             }
         }
     }
