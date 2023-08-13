@@ -16,7 +16,9 @@
 
 @media screen and (max-width: 800px) {
     #form-container {
-        background-image: url(../../../assets/recruitment-page/landing/mobile-view-form-background.png);
+        /* background-image: url(../../../assets/recruitment-page/landing/mobile-view-form-background.png); */
+        background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-back-gnd.png);
+
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -82,7 +84,8 @@ textarea {
     gap: 10px;
 }
 
-#buttons button, #home-btn button {
+#buttons button,
+#home-btn button {
     width: 100px;
     padding: 10px;
     border-radius: 5px;
@@ -116,7 +119,7 @@ textarea {
 #home-btn button {
     width: auto;
     background-color: silver;
-    color: brown
+    color: brown;
 }
 
 @media screen and (max-width: 1200px) {

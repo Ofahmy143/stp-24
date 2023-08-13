@@ -62,7 +62,7 @@ function Form() {
         }
     }
     function navigateToHomePage() {
-        navigate("/stp-24");
+        navigate("/");
     }
 
     async function submitToDatabase(finalData: RecruitmentMember) {

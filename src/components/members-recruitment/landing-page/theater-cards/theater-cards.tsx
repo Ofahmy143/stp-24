@@ -1,6 +1,7 @@
 import "./theater-cards.css";
 // import pic2 from "../../../assets/recruitment-page/landing/web-member-recrut-06.png";
-import pic2 from "../../../../assets/recruitment-page/landing/web-member-recrut-06.png";
+// import pic2 from "../../../../assets/recruitment-page/landing/web-member-recrut-06.png";
+import pic2 from "../../../../assets/recruitment-page/landing/web-member-recrut-back-curtain.png";
 
 import pic3 from "../../../../assets/recruitment-page/landing/web-member-recrut-05.png";
 import { useState } from "react";
@@ -12,7 +13,7 @@ export function TheaterCard({ cardTitle, bulletPoints }: { cardTitle: string, bu
     // console.log({bulletPoints});
     function navigateToForm(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
-        navigate("/stp-24/recruitment-form");
+        navigate("/recruitment-form");
     }
     function toggleCurtain(e: React.MouseEvent<HTMLDivElement>) {
         e.preventDefault();
