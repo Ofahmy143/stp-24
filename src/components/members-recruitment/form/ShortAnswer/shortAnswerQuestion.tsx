@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
-import { useFormStore } from '../../../../zustand/form/formStore';
-import { FormState } from '../../../../zustand/form/formstore';
-import './shortAnswerQuestion.css'
+import { useFormStore } from "../../../../zustand/form/formStore";
+import "./shortAnswerQuestion.css";
 export function ShortAnswerQuestion({
     question,
     name,
@@ -15,7 +13,7 @@ export function ShortAnswerQuestion({
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
         const { value } = e.target;
-        updateForm({[name]: value});
+        updateForm({ [name]: value });
     }
     return (
         <div id="short-answer-question">
@@ -23,7 +21,11 @@ export function ShortAnswerQuestion({
             <input
                 name={name}
                 type="text"
-                value={(Form as any)[name]? (Form as any)[name] : "" }
+                value={
+                    Form[name as keyof typeof Form]
+                        ? Form[name as keyof typeof Form]
+                        : ""
+                }
                 placeholder={question}
                 required
                 onChange={handleChange}

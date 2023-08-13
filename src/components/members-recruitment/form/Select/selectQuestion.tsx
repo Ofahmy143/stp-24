@@ -1,6 +1,6 @@
-import { useFormStore } from '../../../../zustand/form/formStore';
-import './selectQuestion.css'
-import { useEffect, useState } from "react";
+import { useFormStore } from "../../../../zustand/form/formStore";
+import "./selectQuestion.css";
+import { useState } from "react";
 
 export const SelectComponent = ({
     question,
@@ -16,7 +16,7 @@ export const SelectComponent = ({
     const handleOptionChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        updateForm({[name]: event.target.value});
+        updateForm({ [name]: event.target.value });
         setSelectedOption(event.target.value);
         // console.log({[name]: event.target.value})
     };

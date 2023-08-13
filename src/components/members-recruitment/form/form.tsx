@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
 import {
@@ -29,7 +29,7 @@ function Form() {
 
     function validatePage(pageQuestions: PageQuestion[]) {
         for (const question of pageQuestions) {
-            const input = (Form as any)[question.name];
+            const input = Form[question.name as keyof typeof Form];
             if (!input) {
                 return false;
             }
@@ -146,7 +146,7 @@ function Form() {
             {extraQuestions && hideForm && (
                 <>
                     <div id="form">
-                    {err && <h3>Fill all the fields</h3>}
+                        {err && <h3>Fill all the fields</h3>}
                         <h1> Committee Questions </h1>
                         {mappedExtraQuestions.map(
                             (question: PageQuestion, index: number) =>
