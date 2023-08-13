@@ -1,287 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
+import { PageQuestion, Question, questions } from "./questions";
+import { ShortAnswerQuestion } from "./ShortAnswer/shortAnswerQuestion";
+import { EssayQuestion } from "./Essay/essayQuestion";
+import { SelectComponent } from "./Select/selectQuestion";
 
-// type questionType = "short-answer" | "essay" | "mcq" | "scq";
-// type subChoices = {
-//     [key: string]: string[];
-// }
-// type PageQuestion = {
-//     question: string;
-//     type: questionType;
-//     regex?: string;
-//     choices?: string[];
-//     subChoices?: subChoices;
-// }
-// type Page = {
-//     title : string;
-//     pageQuestions: PageQuestion[];
-// }
 
-// type Question = {
-//     [key: string]: Page;
-// }
+//TODO:: sucess and fail screens
 
-type Question = {
-    title: string;
-    pageQuestions: PageQuestion[];
-};
 
-type PageQuestion = {
-    question: string;
-    type: "short-answer" | "select" | "essay";
-    name: string;
-    regex?: string;
-    choices?: string[];
-    subChoices?: { [key: string]: string[] };
-    placeholder?: string;
-};
-
-type QuestionsObject = { [key: number]: Question };
-
-// export function MCQ({
-//     question,
-//     choices,
-// }: {
-//     question: string;
-//     choices: string[];
-// }) {
-//     return (
-//         <div id="mcq">
-//             <h3>{question}</h3>
-//         </div>
-//     );
-// }
-
-// export function SCQ({
-//     question,
-//     choices,
-// }: {
-//     question: string;
-//     choices: string[];
-// }) {
-//     const [selectedOption, setSelectedOption] = useState<string>("");
-
-//     function handleOptionChange(choice: string) {
-//         setSelectedOption(choice);
-//     }
-//     return (
-//         <div id="scq">
-//             <h3>{question}</h3>
-//             <div id="choices">
-//                 {choices.map((choice) => (
-//                     <label id="single-choice">
-//                         <input
-//                             type="radio"
-//                             value={choice}
-//                             checked={selectedOption === choice}
-//                             onChange={() => handleOptionChange(choice)}
-//                         />
-//                         {choice}
-//                     </label>
-//                 ))}
-//             </div>
-//         </div>
-//     );
-// }
-
-const questions: QuestionsObject = {
-    1: {
-        title: "Personal Information",
-        pageQuestions: [
-            {
-                question: "Name",
-                type: "short-answer",
-                name: "name",
-                regex: "",
-            },
-            {
-                question: "Email",
-                type: "short-answer",
-                name: "email",
-                regex: "",
-            },
-            {
-                question: "Mobile Number",
-                type: "short-answer",
-                name: "mobile",
-                regex: "",
-            },
-            {
-                question: "Area of residency",
-                type: "short-answer",
-                regex: "",
-                name: "areaOfResidency",
-            },
-        ],
-    },
-
-    2: {
-        title: "Position Information",
-
-        pageQuestions: [
-            {
-                question: "First Preference",
-                type: "select",
-                name: "firstPreference",
-                choices: ["AC", "Multimedia", "IR", "ER", "Events"],
-                subChoices: {
-                    AC: ["Freelancing", "Engineering", "Juniors"],
-                    Multimedia: [
-                        "Social Media",
-                        "Media",
-                        "Graphic Design",
-                        "Podcast",
-                        "Software",
-                    ],
-                    IR: ["Logistics", "DCR", "HR and QC"],
-                    ER: ["Public Relations", "Business Development"],
-                    Events: ["Technical Team"],
-                },
-            },
-            {
-                question: "Second Preference",
-                type: "select",
-                name: "secondPreference",
-                choices: ["AC", "Multimedia", "IR", "ER", "Events"],
-                subChoices: {
-                    AC: ["Freelancing", "Engineering", "Juniors"],
-                    Multimedia: [
-                        "Social Media",
-                        "Media",
-                        "Graphic Design",
-                        "Podcast",
-                        "Software",
-                    ],
-                    IR: ["Logistics", "DCR", "HR and QC"],
-                    ER: ["Public Relations", "Business Development"],
-                    Events: ["Technical Team"],
-                },
-            },
-            {
-                question: "Reason for applying",
-                type: "essay",
-                name: "reasonForApplying",
-                placeholder: "Write your answer here",
-            },
-            {
-                question: "Previous Experience",
-                type: "essay",
-                name: "previousExperience",
-                placeholder: "Write your answer here",
-            },
-        ],
-    },
-    3: {
-        title: "Educational Information",
-        pageQuestions: [
-            {
-                question: "University",
-                type: "short-answer",
-                name: "university",
-                regex: "",
-            },
-            {
-                question: "Faculty",
-                type: "short-answer",
-                name: "faculty",
-                regex: "",
-            },
-            {
-                question: "Department",
-                type: "short-answer",
-                name: "department",
-                regex: "",
-            },
-            {
-                question: "Graduation Year",
-                name: "graduationYear",
-                type: "select",
-                choices: ["2024", "2025", "2026", "2027", "2028"],
-            },
-        ],
-    },
-};
-
-const SelectComponent = ({
-    question,
-    options,
-    name,
-}: {
-    question: string;
-    options: string[];
-    name: string;
-}) => {
-    const [selectedOption, setSelectedOption] = useState<string>("");
-
-    const handleOptionChange = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ) => {
-        setSelectedOption(event.target.value);
-        // setResults({ ...results, [name]: selectedOption });
-    };
-    // useEffect(() => {
-    //     setResults({...results, [name]: selectedOption});
-    // }, [selectedOption]);
-    return (
-        <div id="select-question">
-            <select
-                name={name}
-                value={selectedOption}
-                onChange={handleOptionChange}
-                required
-            >
-                <option value="">{question}</option>
-                {options.map((option: string, index: number) => (
-                    <option value={option} key={index}>
-                        {option}{" "}
-                    </option>
-                ))}
-            </select>
-        </div>
-    );
-};
-function ShortAnswerQuestion({
-    question,
-    name,
-}: // regex,
-{
-    question: string;
-    name: string;
-    // regex: string;
-}) {
-    // function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    //     setResults({ ...results, [e.target.name]: e.target.value });
-    // }
-    return (
-        <div id="short-answer-question">
-            {/* <h3>{question}</h3> */}
-            <input
-                name={name}
-                type="text"
-                placeholder={question}
-                required
-                // onChange={handleChange}
-            />
-        </div>
-    );
-}
-function EssayQuestion({ question, name }: { question: string; name: string }) {
-    // function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    //     setResults({ ...results, [e.target.name]: e.target.value });
-    // }
-    return (
-        <div id="essay-question">
-            <textarea
-                name={name}
-                id=""
-                placeholder={question}
-                required
-                // onChange={handleChange}
-            ></textarea>
-        </div>
-    );
-}
 function Form() {
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -300,8 +28,8 @@ function Form() {
         }
 
         try{
-            
-            const res = await fetch("https://stp-24.onrender.com/member-recruitment/",{
+            // TODO: check is OK and appear success screen
+            await fetch("https://stp-24.onrender.com/member-recruitment/",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -382,12 +110,6 @@ function Form() {
                                     options={question.choices || []}
                                     key={index}
                                 />
-                                // question.subChoices && (
-                                //     <SelectComponent
-                                //         question={"Sub Choices"}
-                                //         options={question.subChoices[question.choices]}
-                                //         key={index} />
-                                // )
                             )
                         )
                 )}
