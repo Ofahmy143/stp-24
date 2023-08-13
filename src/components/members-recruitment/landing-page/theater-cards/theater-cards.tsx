@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 export function TheaterCard({ cardTitle, bulletPoints }: { cardTitle: string, bulletPoints: string[] }) {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
-    console.log({bulletPoints});
+    // console.log({bulletPoints});
     function navigateToForm(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
         navigate("/stp-24/recruitment-form");

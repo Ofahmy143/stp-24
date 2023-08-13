@@ -1,6 +1,6 @@
 import { useFormStore } from '../../../../zustand/form/formStore';
 import './selectQuestion.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const SelectComponent = ({
     question,
@@ -16,11 +16,10 @@ export const SelectComponent = ({
     const handleOptionChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
-        setSelectedOption(event.target.value);
         updateForm({[name]: event.target.value});
-        // setResults({ ...results, [name]: selectedOption });
+        setSelectedOption(event.target.value);
+        // console.log({[name]: event.target.value})
     };
-    
 
     return (
         <div id="select-question">

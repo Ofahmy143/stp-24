@@ -17,16 +17,14 @@ export function ShortAnswerQuestion({
         const { value } = e.target;
         updateForm({[name]: value});
     }
-    useEffect(() => {
-        console.log({ Form });
-    }, [Form]);
     return (
         <div id="short-answer-question">
             {/* <h3>{question}</h3> */}
             <input
                 name={name}
                 type="text"
-                placeholder={(Form as any)[name]? (Form as any)[name] : question }
+                value={(Form as any)[name]? (Form as any)[name] : "" }
+                placeholder={question}
                 required
                 onChange={handleChange}
             />
