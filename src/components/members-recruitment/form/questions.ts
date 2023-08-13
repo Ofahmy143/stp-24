@@ -30,10 +30,10 @@ const committeeChoices = [
     "AC-Montage",
     "Multimedia-Graphic Design",
     "Multimedia-Media",
-    "Multimedia-Podcast",
-    "Multimedia-Social Media",
     "Multimedia-Mobile Development",
     "Multimedia-Web Development",
+    "Multimedia-Podcast",
+    "Multimedia-Social Media",
     "IR-Logistics",
     "IR-Decoration, Coordination And Reception",
     "IR-HR and QC",
@@ -156,14 +156,13 @@ export const ACQuestions = {
         {
             question:
                 "Familiar in Python? if yes describe how familiar you are",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q3",
         },
         {
             question:
                 "How do you rate yourself in Python? (Beginner-Intermediate-Advanced)",
-            type: QuestionTypeEnum.SELECT,
-            choices: ["Beginner", "Intermediate", "Advanced"],
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
     ],
@@ -184,13 +183,12 @@ export const ACQuestions = {
         {
             question:
                 "Familiar with Machine Algorithms? if yes describe how familiar you are (short Ans)",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q3",
         },
         {
             question: "How do you rate yourself in Machine Learning?",
-            type: QuestionTypeEnum.SELECT,
-            choices: ["Beginner", "Intermediate", "Advanced"],
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
         {
@@ -217,13 +215,13 @@ export const ACQuestions = {
         {
             question:
                 "Are you Familiar with Html/CSS? if yes describe how familiar you are (short Ans)",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q3",
         },
         {
             question:
                 "If you have done a front End design before can you upload it and submit the link?",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
         {
@@ -256,12 +254,12 @@ export const ACQuestions = {
         {
             question:
                 "What do you expect to add to secondary students? (short Ans)",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
         {
             question: "Describe your communication skill (short Ans)",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q5",
         },
     ],
@@ -282,7 +280,7 @@ export const ACQuestions = {
         {
             question:
                 "Upload Some of your Designs on google drive and submit the link to the folder",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q3",
         },
         {
@@ -331,7 +329,7 @@ export const ACQuestions = {
         {
             question:
                 "If Yes, submit link of some of your taken videos or pictures else N/A",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q5",
         },
         {

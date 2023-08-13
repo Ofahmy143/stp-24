@@ -48,7 +48,7 @@ function Form() {
                 extraQuestions &&
                 currentPage === Object.keys(questions).length
             ) {
-                console.log("extra questions");
+                // console.log("extra questions");
                 setActiveSubmit(true);
                 setHideForm(true);
             } else {
@@ -156,6 +156,9 @@ function Form() {
             console.log({ committee });
             setExtraQuestions(true);
             setMappedExtraQuestions(committee);
+        }else{
+            if(activeSubmit)setActiveSubmit(false);
+            setExtraQuestions(false);
         }
         console.log("first preference Changed");
     }, [Form.firstPreference]);

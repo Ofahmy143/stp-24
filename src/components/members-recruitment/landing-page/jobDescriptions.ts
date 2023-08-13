@@ -25,12 +25,17 @@ export type JobDescriptionType = {
     };
 };
 
-type MMJobDescription = JobDescriptionType['MM'];
-type ACJobDescription = JobDescriptionType['AC'];
-type IRJobDescription = JobDescriptionType['IR'];
-type ERJobDescription = JobDescriptionType['ER'];
-type EventsJobDescription = JobDescriptionType['Events'];
-export type specificJobDescription = MMJobDescription | ACJobDescription | IRJobDescription | ERJobDescription | EventsJobDescription;
+type MMJobDescription = JobDescriptionType["MM"];
+type ACJobDescription = JobDescriptionType["AC"];
+type IRJobDescription = JobDescriptionType["IR"];
+type ERJobDescription = JobDescriptionType["ER"];
+type EventsJobDescription = JobDescriptionType["Events"];
+export type specificJobDescription =
+    | MMJobDescription
+    | ACJobDescription
+    | IRJobDescription
+    | ERJobDescription
+    | EventsJobDescription;
 
 export const jobDescription: JobDescriptionType = {
     MM: {
@@ -102,11 +107,11 @@ export const jobDescription: JobDescriptionType = {
             "Provide & manage transportation for the participants and materials at events.",
         ],
         DCR: [
-            "Setting Coordination Plan for crowd management at any event in coordination with the PM.",
-            "Creating teams with different roles (Registration, Backstage, Ushering participants and VIPs, etc.) in coordination with the PM.",
-            "Using different materials to create handicrafts and decoratives and responsible for its distribution.",
-            "Responsible for creating different activities and games to maintain a high spirit.",
-            "Help in designing giveaways and activities for the sessions with AC members.",
+            "Setting Coordination Plan and Creating teams with different rules: (Registeration, Backstage, Ushering participants and VIPs,...) at any event in coordination with the PM",
+            "Using different materials to create handicrafts and responsible for its distribution",
+            "Designing and making decorative models that are needed at any event or milestone",
+            "Responsible for overall decorations of venues at any event",
+            "Responsible for creating different activities and games to maintain high spirit",
         ],
         HRandQC: [
             "Responsible for anything related to interviews.",
