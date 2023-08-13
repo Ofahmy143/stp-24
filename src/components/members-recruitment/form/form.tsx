@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
-import { PageQuestion, Question, questions } from "./questions";
+import { PageQuestion, questions, ACQuestions, MultimediaQuestions } from "./questions";
 import { ShortAnswerQuestion } from "./ShortAnswer/shortAnswerQuestion";
 import { EssayQuestion } from "./Essay/essayQuestion";
 import { SelectComponent } from "./Select/selectQuestion";
@@ -14,72 +14,73 @@ function Form() {
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [err, setErr] = useState<boolean>(false);
-    const [results, setResults] = useState<{
-        [key: string]: string | string[] | number | undefined;
-    }>({}); //
 
-    async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
-        e.preventDefault();
-        // const pageLength = Object.keys(questions).length;
-        for (const key in results) {
-            if (!results[key]) {
-                return setErr(true);
-            }
-        }
+    // const [results, setResults] = useState<{
+    //     [key: string]: string | string[] | number | undefined;
+    // }>({}); //
 
-        try{
-            // TODO: check is OK and appear success screen
-            await fetch("https://stp-24.onrender.com/member-recruitment/",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(results),
-            })
-            navigate("/stp-24");
-        }catch(err){
-            console.log((err as Error).message);
-        }
+    // async function handleSubmit(e: React.MouseEvent<HTMLButtonElement>) {
+    //     e.preventDefault();
+    //     // const pageLength = Object.keys(questions).length;
+    //     for (const key in results) {
+    //         if (!results[key]) {
+    //             return setErr(true);
+    //         }
+    //     }
+
+    //     try{
+    //         // TODO: check is OK and appear success screen
+    //         await fetch("https://stp-24.onrender.com/member-recruitment/",{
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(results),
+    //         })
+    //         navigate("/stp-24");
+    //     }catch(err){
+    //         console.log((err as Error).message);
+    //     }
 
 
-    }
-    function fillData(page: Question) {
-        const pq = page.pageQuestions;
-        const data: { [key: string]: string | string[] | number | undefined } =
-            {};
-        for (const q of pq) {
-            const input = document.querySelector(`[name="${q.name}"]`) as
-                | HTMLInputElement
-                | HTMLTextAreaElement
-                | HTMLSelectElement;
-            if (!input.value) {
-                return false;
-            }
-            console.log("passed name here", q.name);
-            console.log("passed value here", input.value);
-            console.log("passsed result here", results);
-            data[q.name] = input.value;
-        }
-        const addedData = { ...results, ...data };
-        setResults(addedData);
-        return true;
-    }
-    useEffect(() => {
-        refillData(questions[currentPage]);
-    }, [currentPage]);
-    function refillData(page: Question) {
-        const pq = page.pageQuestions;
-        for (const q of pq) {
-            console.log({ q });
-            // const test = document.querySelector(`[name="${q.name}"]`);
-            (document.querySelector(`[name="${q.name}"]`) as HTMLInputElement).value =(results[q.name] as string)? (results[q.name] as string):""
-            // console.log((test as HTMLInputElement));
-            // .value = results[q.name] as string;
-        }
-    }
-    useEffect(() => {
-        console.log({ results });
-    }, [results]);
+    // }
+    // function fillData(page: Question) {
+    //     const pq = page.pageQuestions;
+    //     const data: { [key: string]: string | string[] | number | undefined } =
+    //         {};
+    //     for (const q of pq) {
+    //         const input = document.querySelector(`[name="${q.name}"]`) as
+    //             | HTMLInputElement
+    //             | HTMLTextAreaElement
+    //             | HTMLSelectElement;
+    //         if (!input.value) {
+    //             return false;
+    //         }
+    //         console.log("passed name here", q.name);
+    //         console.log("passed value here", input.value);
+    //         console.log("passsed result here", results);
+    //         data[q.name] = input.value;
+    //     }
+    //     const addedData = { ...results, ...data };
+    //     setResults(addedData);
+    //     return true;
+    // }
+    // useEffect(() => {
+    //     refillData(questions[currentPage]);
+    // }, [currentPage]);
+    // function refillData(page: Question) {
+    //     const pq = page.pageQuestions;
+    //     for (const q of pq) {
+    //         console.log({ q });
+    //         // const test = document.querySelector(`[name="${q.name}"]`);
+    //         (document.querySelector(`[name="${q.name}"]`) as HTMLInputElement).value =(results[q.name] as string)? (results[q.name] as string):""
+    //         // console.log((test as HTMLInputElement));
+    //         // .value = results[q.name] as string;
+    //     }
+    // }
+    // useEffect(() => {
+    //     console.log({ results });
+    // }, [results]);
 
     return (
         <div id="form-container">
@@ -117,20 +118,20 @@ function Form() {
             <div id="buttons">
                 <button
                     type="button"
-                    onClick={() => {
-                        if (currentPage > 1) {
-                            // refill
-                            // refillData(questions[currentPage - 1]);
-                            setCurrentPage(currentPage - 1);
-                        }
-                    }}
+                    // onClick={() => {
+                    //     if (currentPage > 1) {
+                    //         // refill
+                    //         // refillData(questions[currentPage - 1]);
+                    //         setCurrentPage(currentPage - 1);
+                    //     }
+                    // }}
                 >
                     Previous
                 </button>
-                <button type="button" onClick={handleSubmit}>
-                    Submit
-                </button>
-                <button
+                
+                {currentPage === 3 && <button type="button" ></button>}
+                {currentPage !== 3 && <button type="button">Next</button>}
+                {/* <button
                     type="button"
                     onClick={() => {
                         if (currentPage < 3) {
@@ -146,7 +147,7 @@ function Form() {
                     }}
                 >
                     Next
-                </button>
+                </button> */}
             </div>
         </div>
     );

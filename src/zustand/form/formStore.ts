@@ -19,12 +19,14 @@ const initialFormState: FormState = {
     q2: "",
     q3: "",
     q4: "",
+    q5: "",
+    q6: "",
     subFirstPreference: "",
     subSecondPreference: "",
 };
 
 export const useFormStore = create<FormStore>((set) => ({
-    Form: initialFormState,
-    updateForm: (update: Partial<FormState>) =>
-        set({ Form: { ...initialFormState, ...update } }),
+  Form: initialFormState,
+  updateForm: (update: Partial<FormState>) =>
+      set((state) => ({ Form: { ...state.Form, ...update } })),
 }));

@@ -21,4 +21,6 @@ export type FormState = {
     q2: string;
     q3: string;
     q4?: string;
+    q5?: string;
+    q6?: string;
 };

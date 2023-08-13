@@ -1,8 +1,10 @@
+import { useFormStore } from '../../../../zustand/form/formStore';
 import './essayQuestion.css'
 export function EssayQuestion({ question, name }: { question: string; name: string }) {
-    // function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    //     setResults({ ...results, [e.target.name]: e.target.value });
-    // }
+    const { updateForm } = useFormStore();
+    function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+        updateForm({[name]: e.target.value});
+    }
     return (
         <div id="essay-question">
             <textarea
@@ -10,7 +12,7 @@ export function EssayQuestion({ question, name }: { question: string; name: stri
                 id=""
                 placeholder={question}
                 required
-                // onChange={handleChange}
+                onChange={handleChange}
             ></textarea>
         </div>
     );
