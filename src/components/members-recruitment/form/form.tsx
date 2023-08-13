@@ -129,12 +129,17 @@ function Form() {
     }
 
     useEffect(() => {
+        const section: CategoryQuestions =
+        committeQuestions[
+            Form.firstPreference.split(
+                "-"
+            )[0] as keyof typeof committeQuestions
+        ];
+
+        const committee = section? section[Form.firstPreference.split("-")[1]] : undefined;
+
         if (
-            committeQuestions[
-                Form.firstPreference.split(
-                    "-"
-                )[0] as keyof typeof committeQuestions
-            ]
+            committee
         ) {
             console.log({ section: Form.firstPreference.split("-")[0] });
             console.log(
@@ -145,20 +150,20 @@ function Form() {
                 ]
             );
             // setHideForm(true);
-            const section: CategoryQuestions =
-                committeQuestions[
-                    Form.firstPreference.split(
-                        "-"
-                    )[0] as keyof typeof committeQuestions
-                ];
-            console.log({ section });
-            const committee = section[Form.firstPreference.split("-")[1]];
-            console.log({ committee });
+            // const section: CategoryQuestions =
+            //     committeQuestions[
+            //         Form.firstPreference.split(
+            //             "-"
+            //         )[0] as keyof typeof committeQuestions
+            //     ];
+            // console.log({ section });
+            // console.log({ committee });
             setExtraQuestions(true);
             setMappedExtraQuestions(committee);
         }else{
-            if(activeSubmit)setActiveSubmit(false);
+            // if(activeSubmit)setActiveSubmit(false);
             setExtraQuestions(false);
+            setMappedExtraQuestions([]);
         }
         console.log("first preference Changed");
     }, [Form.firstPreference]);

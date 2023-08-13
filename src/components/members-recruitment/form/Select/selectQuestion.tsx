@@ -1,6 +1,6 @@
 import { useFormStore } from "../../../../zustand/form/formStore";
 import "./selectQuestion.css";
-import { useState } from "react";
+// import { useEffect, useState } from "react";
 
 export const SelectComponent = ({
     question,
@@ -11,21 +11,25 @@ export const SelectComponent = ({
     options: string[];
     name: string;
 }) => {
-    const [selectedOption, setSelectedOption] = useState<string>("");
-    const { updateForm } = useFormStore();
+    // const [selectedOption, setSelectedOption] = useState<string>("");
+    const { Form, updateForm } = useFormStore();
     const handleOptionChange = (
         event: React.ChangeEvent<HTMLSelectElement>
     ) => {
+        // console.log("Iam here")
+        // console.log({this: event.target.value});
         updateForm({ [name]: event.target.value });
-        setSelectedOption(event.target.value);
+        // setSelectedOption(event.target.value);
         // console.log({[name]: event.target.value})
     };
+
+
 
     return (
         <div id="select-question">
             <select
                 name={name}
-                value={selectedOption}
+                value={Form[name as keyof typeof Form] }
                 onChange={handleOptionChange}
                 required
             >
