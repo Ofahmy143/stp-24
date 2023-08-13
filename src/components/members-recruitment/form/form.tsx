@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./form.css";
 import { useNavigate } from "react-router-dom";
 import {
     PageQuestion,
     questions,
-    ACQuestions,
-    MultimediaQuestions,
-    Question,
+    extraQuestions as committeQuestions,
+    CategoryQuestions,
 } from "./questions";
 import { ShortAnswerQuestion } from "./ShortAnswer/shortAnswerQuestion";
 import { EssayQuestion } from "./Essay/essayQuestion";
@@ -21,11 +20,15 @@ function Form() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [err, setErr] = useState<boolean>(false);
     const [success, setSucess] = useState<boolean>(false);
+    const [hideForm, setHideForm] = useState<boolean>(false);
+    const [extraQuestions, setExtraQuestions] = useState<boolean>(false);
+    const [mappedExtraQuestions, setMappedExtraQuestions] = useState<
+        PageQuestion[]
+    >([]);
+    const [activeSubmit, setActiveSubmit] = useState<boolean>(false);
 
-    function validatePage(page: Question) {
-        const pageQuestions = page.pageQuestions;
+    function validatePage(pageQuestions: PageQuestion[]) {
         for (const question of pageQuestions) {
-
             const input = (Form as any)[question.name];
             if (!input) {
                 return false;
@@ -35,12 +38,24 @@ function Form() {
     }
 
     function handlePageForward() {
-        if (currentPage < Object.keys(questions).length) {
-            if (!validatePage(questions[currentPage])) {
-                setErr(true);
+        // Form.firstPreference = "AC-Python";
+
+        // console.log({test})
+        if (currentPage <= Object.keys(questions).length) {
+            if (
+                extraQuestions &&
+                currentPage === Object.keys(questions).length
+            ) {
+                console.log("extra questions");
+                setActiveSubmit(true);
+                setHideForm(true);
             } else {
-                setErr(false);
-                setCurrentPage(currentPage + 1);
+                if (!validatePage(questions[currentPage].pageQuestions)) {
+                    setErr(true);
+                } else {
+                    setErr(false);
+                    setCurrentPage(currentPage + 1);
+                }
             }
         }
     }
@@ -49,22 +64,121 @@ function Form() {
     }
 
     function handlePageBackward() {
+        if (extraQuestions) {
+            setActiveSubmit(false);
+            setHideForm(false);
+            setCurrentPage(Object.keys(questions).length + 1);
+        }
+
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     }
     function handleSubmit() {
-        if(!validatePage(questions[currentPage])) {
-            setErr(true);
-        }else{
-            console.log({FinalForm: Form});
-            setSucess(true);
+        if (!extraQuestions) {
+            if (!validatePage(questions[currentPage].pageQuestions)) {
+                setErr(true);
+            } else {
+                const FinalForm = {
+                    ...Form,
+                    firstPreference: Form?.firstPreference.split("-")[0],
+                    secondPreference: Form?.secondPreference.split("-")[0],
+                    subFirstPreference: Form?.firstPreference.split("-")[1],
+                    subSecondPreference: Form?.secondPreference.split("-")[1],
+                };
+                console.log({ FinalForm });
+                setExtraQuestions(false);
+                setHideForm(true);
+                setSucess(true);
+            }
+        } else {
+            if (!validatePage(mappedExtraQuestions)) {
+                setErr(true);
+            } else {
+                const FinalForm = {
+                    ...Form,
+                    firstPreference: Form?.firstPreference.split("-")[0],
+                    secondPreference: Form?.secondPreference.split("-")[0],
+                    subFirstPreference: Form?.firstPreference.split("-")[1],
+                    subSecondPreference: Form?.secondPreference.split("-")[1],
+                };
+                console.log({ FinalForm });
+                setExtraQuestions(false);
+                setHideForm(true);
+                setSucess(true);
+            }
         }
     }
 
+    useEffect(() => {
+        if (
+            committeQuestions[
+                Form.firstPreference.split(
+                    "-"
+                )[0] as keyof typeof committeQuestions
+            ]
+        ) {
+            console.log({ section: Form.firstPreference.split("-")[0] });
+            console.log(
+                committeQuestions[
+                    Form.firstPreference.split(
+                        "-"
+                    )[0] as keyof typeof committeQuestions
+                ]
+            );
+            // setHideForm(true);
+            const section: CategoryQuestions =
+                committeQuestions[
+                    Form.firstPreference.split(
+                        "-"
+                    )[0] as keyof typeof committeQuestions
+                ];
+            console.log({ section });
+            const committee = section[Form.firstPreference.split("-")[1]];
+            console.log({ committee });
+            setExtraQuestions(true);
+            setMappedExtraQuestions(committee);
+        }
+        console.log("first preference Changed");
+    }, [Form.firstPreference]);
     return (
         <div id="form-container">
-            {!success && (
+            {extraQuestions && hideForm && (
+                <>
+                    <div id="form">
+                    {err && <h3>Fill all the fields</h3>}
+                        <h1> Committee Questions </h1>
+                        {mappedExtraQuestions.map(
+                            (question: PageQuestion, index: number) =>
+                                question.type === "short-answer" ? (
+                                    <ShortAnswerQuestion
+                                        question={question.question}
+                                        // regex={question.regex}
+                                        name={question.name}
+                                        key={index}
+                                    />
+                                ) : question.type === "essay" ? (
+                                    <EssayQuestion
+                                        question={question.question}
+                                        name={question.name}
+                                        // placeholder={question.question}
+                                        key={index}
+                                    />
+                                ) : (
+                                    question.type === "select" && (
+                                        <SelectComponent
+                                            question={question.question}
+                                            name={question.name}
+                                            options={question.choices || []}
+                                            key={index}
+                                        />
+                                    )
+                                )
+                        )}
+                    </div>
+                </>
+            )}
+            {!hideForm && (
                 <>
                     <form id="form" action="">
                         <h1>{questions[currentPage].title}</h1>
@@ -97,32 +211,40 @@ function Form() {
                                 )
                         )}
                     </form>
-                    <div id="buttons">
-                        <button type="button" onClick={handlePageBackward}>
-                            Previous
-                        </button>
+                </>
+            )}
+            {!success && (
+                <div id="buttons">
+                    <button type="button" onClick={handlePageBackward}>
+                        Previous
+                    </button>
 
-                        {currentPage === 3 && (
-                            <button type="button" onClick={handleSubmit}>
-                                Submit
-                            </button>
-                        )}
-                        {currentPage !== 3 && (
+                    {((currentPage >= Object.keys(questions).length &&
+                        !extraQuestions) ||
+                        activeSubmit) && (
+                        <button type="button" onClick={handleSubmit}>
+                            Submit
+                        </button>
+                    )}
+                    {(currentPage !== Object.keys(questions).length ||
+                        extraQuestions) &&
+                        !activeSubmit && (
                             <button type="button" onClick={handlePageForward}>
                                 Next
                             </button>
                         )}
-                    </div>
-                </>
+                </div>
             )}
             {success && (
                 <>
-                <div id="form">
-                    <h2>Thank you for applying!</h2>
-                </div>
-                <div id="home-btn">
-                    <button onClick={navigateToHomePage}>Back to HomePage</button>
-                </div>
+                    <div id="form">
+                        <h2>Thank you for applying!</h2>
+                    </div>
+                    <div id="home-btn">
+                        <button onClick={navigateToHomePage}>
+                            Back to HomePage
+                        </button>
+                    </div>
                 </>
             )}
         </div>
