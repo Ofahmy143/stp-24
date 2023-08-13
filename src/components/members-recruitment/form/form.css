@@ -9,6 +9,7 @@
     border: 1px solid red;
     /* background-image: url(./src/assets/recruitment-page/landing/web-member-recrut-03.png); */
     background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-03.png);
+    /* background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-back-gnd.png); */
 
     background-size: cover;
     background-position: center;
@@ -16,8 +17,7 @@
 
 @media screen and (max-width: 800px) {
     #form-container {
-        /* background-image: url(../../../assets/recruitment-page/landing/mobile-view-form-background.png); */
-        background-image: url(../../../assets/recruitment-page/landing/web-member-recrut-back-gnd.png);
+        background-image: url(../../../assets/recruitment-page/landing/mobile-view-form-background.png);
 
         background-size: cover;
         background-repeat: no-repeat;
@@ -33,6 +33,7 @@
     flex-direction: column;
     gap: 10px;
     width: 30%;
+    margin-top: 10%;
     padding: 20px;
     border: 5px dashed white;
     color: whitesmoke;

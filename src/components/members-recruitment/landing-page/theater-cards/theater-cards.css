@@ -29,6 +29,10 @@
     animation: open 0.3s linear forwards;
 }
 
+#closed-curtain {
+    animation: open 0.3s linear forwards;
+}
+
 #card-title {
     position: absolute;
     top: 0;

@@ -15,14 +15,18 @@ export function TheaterCard({ cardTitle, bulletPoints }: { cardTitle: string, bu
         e.preventDefault();
         navigate("/recruitment-form");
     }
-    function toggleCurtain(e: React.MouseEvent<HTMLDivElement>) {
+    function toggleCurtainOn(e: React.MouseEvent<HTMLDivElement>) {
         e.preventDefault();
         setIsOpen(true);
     }
+    function toggleCurtainOff(e: React.MouseEvent<HTMLDivElement>) {
+        e.preventDefault();
+        setIsOpen(false);
+    }
 
     return (
-        <div id="theater-card" onMouseOver={toggleCurtain}>
-            {!isOpen ? (
+        <div id="theater-card" onMouseLeave={toggleCurtainOff} onMouseEnter={toggleCurtainOn}>
+            {!isOpen && (
                 <>
                     <img
                         id="closed-curtain"
@@ -32,7 +36,8 @@ export function TheaterCard({ cardTitle, bulletPoints }: { cardTitle: string, bu
                     />
                     <img id="card-title" src={cardTitle} alt="" />
                 </>
-            ) : (
+            ) }
+            {isOpen && (
                 <>
                     <img
                         id="opened-curtain"
