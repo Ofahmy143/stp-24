@@ -285,7 +285,7 @@ export const ACQuestions = {
         },
         {
             question: "Can you name some selection tools in Photoshop",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
         {
@@ -296,7 +296,7 @@ export const ACQuestions = {
         },
         {
             question: "Familiar Graphic Design Application That you have used?",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q6",
         },
     ],
@@ -346,7 +346,7 @@ export const MultimediaQuestions = {
         {
             question:
                 "Mention software that you've tried before (ex:  photoshop, Illustrator....etc.)",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q1",
         },
         {
@@ -363,7 +363,7 @@ export const MultimediaQuestions = {
         {
             question:
                 "your previous work/portfolio (IF YOU HAVE), Upload drive link and Make sure it is public",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
     ],
@@ -376,13 +376,13 @@ export const MultimediaQuestions = {
         },
         {
             question: "What Adobe Softwares have you tried before?",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q2",
         },
         {
             question:
                 "your previous work/portfolio (IF YOU HAVE), Upload drive link and Make sure it is public",
-            type: QuestionTypeEnum.SHORT_ANSWER,
+            type: QuestionTypeEnum.ESSAY,
             name: "q4",
         },
     ],

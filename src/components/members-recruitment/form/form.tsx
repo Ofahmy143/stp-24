@@ -22,6 +22,7 @@ function Form() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [err, setErr] = useState<boolean>(false);
     const [success, setSucess] = useState<boolean>(false);
+    const [resErr, setResErr] = useState<boolean>(false);
     const [hideForm, setHideForm] = useState<boolean>(false);
     const [extraQuestions, setExtraQuestions] = useState<boolean>(false);
     const [mappedExtraQuestions, setMappedExtraQuestions] = useState<
@@ -65,18 +66,22 @@ function Form() {
         navigate("/");
     }
 
+    function tryAgainResErr(){
+        window.location.reload();
+    }
+
     async function submitToDatabase(finalData: RecruitmentMember) {
-        try{
+        try {
             const response = await axios({
                 method: "post",
                 url: "https://stp-24.onrender.com/member-recruitment/",
                 data: finalData,
-            })
-
-            console.log(response.data)
-
-        }catch(err){
-            console.log((err as Error).message)
+            });
+            setSucess(true);
+            console.log(response.data);
+        } catch (err) {
+            console.log((err as Error).message);
+            setResErr(true);
         }
     }
     function handlePageBackward() {
@@ -105,7 +110,6 @@ function Form() {
                 console.log({ FinalForm });
                 setExtraQuestions(false);
                 setHideForm(true);
-                setSucess(true);
                 submitToDatabase(FinalForm);
             }
         } else {
@@ -130,17 +134,17 @@ function Form() {
 
     useEffect(() => {
         const section: CategoryQuestions =
-        committeQuestions[
-            Form.firstPreference.split(
-                "-"
-            )[0] as keyof typeof committeQuestions
-        ];
+            committeQuestions[
+                Form.firstPreference.split(
+                    "-"
+                )[0] as keyof typeof committeQuestions
+            ];
 
-        const committee = section? section[Form.firstPreference.split("-")[1]] : undefined;
+        const committee = section
+            ? section[Form.firstPreference.split("-")[1]]
+            : undefined;
 
-        if (
-            committee
-        ) {
+        if (committee) {
             console.log({ section: Form.firstPreference.split("-")[0] });
             console.log(
                 committeQuestions[
@@ -160,7 +164,7 @@ function Form() {
             // console.log({ committee });
             setExtraQuestions(true);
             setMappedExtraQuestions(committee);
-        }else{
+        } else {
             // if(activeSubmit)setActiveSubmit(false);
             setExtraQuestions(false);
             setMappedExtraQuestions([]);
@@ -239,7 +243,7 @@ function Form() {
                     </form>
                 </>
             )}
-            {!success && (
+            {!success && !resErr && (
                 <div id="buttons">
                     <button type="button" onClick={handlePageBackward}>
                         Previous
@@ -269,6 +273,19 @@ function Form() {
                     <div id="home-btn">
                         <button onClick={navigateToHomePage}>
                             Back to HomePage
+                        </button>
+                    </div>
+                </>
+            )}
+            {resErr && (
+                <>
+                    <div id="form">
+                        <h2>Something went Wrong!</h2>
+                        <p>may be duplicate submission</p>
+                    </div>
+                    <div id="home-btn">
+                        <button onClick={tryAgainResErr}>
+                            Try again
                         </button>
                     </div>
                 </>
