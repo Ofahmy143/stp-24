@@ -77,10 +77,11 @@ function Form() {
                 url: "https://stp-24.onrender.com/member-recruitment/",
                 data: finalData,
             });
+
             setSucess(true);
-            console.log(response.data);
+            console.warn(response);
         } catch (err) {
-            console.log((err as Error).message);
+            console.error((err as Error).message);
             setResErr(true);
         }
     }
