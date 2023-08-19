@@ -22,12 +22,12 @@ export type PageQuestion = {
 export type QuestionsObject = { [key: number]: Question };
 
 const committeeChoices = [
-    "AC-Python",
-    "AC-Machine Learning",
-    "AC-Front End",
-    "AC-Juniors",
-    "AC-Graphic Design",
-    "AC-Montage",
+    "AC-Python instructor",
+    "AC-Machine Learning instructor",
+    "AC-Front End instructor",
+    "AC-Juniors instructor",
+    "AC-Graphic Design instructor",
+    "AC-Montage instructor",
     "Multimedia-Graphic Design",
     "Multimedia-Media",
     "Multimedia-Mobile Development",
@@ -139,7 +139,7 @@ export type CategoryQuestions = {
 };
 
 export const ACQuestions = {
-    Python: [
+    "Python instructor": [
         {
             question: "Have you been to a student activity before? (Yes/No)",
             type: QuestionTypeEnum.SELECT,
@@ -166,7 +166,7 @@ export const ACQuestions = {
             name: "q4",
         },
     ],
-    "Machine Learning": [
+    "Machine Learning instructor": [
         {
             question: "Have you been to a student activity before?",
             type: QuestionTypeEnum.SELECT,
@@ -198,7 +198,7 @@ export const ACQuestions = {
             name: "q5",
         },
     ],
-    "Front End": [
+    "Front End instructor": [
         {
             question: "Have you been to a student activity before?",
             type: QuestionTypeEnum.SELECT,
@@ -231,7 +231,7 @@ export const ACQuestions = {
             name: "q5",
         },
     ],
-    Juniors: [
+    "Juniors instructor": [
         {
             question: "Have you been to a student activity before?",
             type: QuestionTypeEnum.SELECT,
@@ -263,7 +263,7 @@ export const ACQuestions = {
             name: "q5",
         },
     ],
-    "Graphic Design": [
+    "Graphic Design instructor": [
         {
             question: "Have you been to a student activity before?",
             type: QuestionTypeEnum.SELECT,
@@ -300,7 +300,7 @@ export const ACQuestions = {
             name: "q6",
         },
     ],
-    Montage: [
+    "Montage instructor": [
         {
             question: "Have you been to a student activity before?",
             type: QuestionTypeEnum.SELECT,

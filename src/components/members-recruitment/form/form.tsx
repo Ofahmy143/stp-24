@@ -77,7 +77,6 @@ function Form() {
                 url: "https://stp-24.onrender.com/member-recruitment/",
                 data: finalData,
             });
-
             setSucess(true);
             console.warn(response);
         } catch (err) {
@@ -108,7 +107,7 @@ function Form() {
                     subFirstPreference: Form?.firstPreference.split("-")[1],
                     subSecondPreference: Form?.secondPreference.split("-")[1],
                 };
-                console.log({ FinalForm });
+                // console.log({ FinalForm });
                 setExtraQuestions(false);
                 setHideForm(true);
                 submitToDatabase(FinalForm);
@@ -124,7 +123,7 @@ function Form() {
                     subFirstPreference: Form?.firstPreference.split("-")[1],
                     subSecondPreference: Form?.secondPreference.split("-")[1],
                 };
-                console.log({ FinalForm });
+                // console.log({ FinalForm });
                 setExtraQuestions(false);
                 setHideForm(true);
                 setSucess(true);
@@ -146,14 +145,14 @@ function Form() {
             : undefined;
 
         if (committee) {
-            console.log({ section: Form.firstPreference.split("-")[0] });
-            console.log(
-                committeQuestions[
-                    Form.firstPreference.split(
-                        "-"
-                    )[0] as keyof typeof committeQuestions
-                ]
-            );
+            // console.log({ section: Form.firstPreference.split("-")[0] });
+            // console.log(
+            //     committeQuestions[
+            //         Form.firstPreference.split(
+            //             "-"
+            //         )[0] as keyof typeof committeQuestions
+            //     ]
+            // );
             // setHideForm(true);
             // const section: CategoryQuestions =
             //     committeQuestions[
