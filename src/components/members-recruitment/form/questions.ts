@@ -22,24 +22,24 @@ export type PageQuestion = {
 export type QuestionsObject = { [key: number]: Question };
 
 const committeeChoices = [
-    "AC-Python instructor",
-    "AC-Machine Learning instructor",
+    // "AC-Python instructor",
+    // "AC-Machine Learning instructor",
     "AC-Front End instructor",
-    "AC-Juniors instructor",
-    "AC-Graphic Design instructor",
-    "AC-Montage instructor",
-    "Multimedia-Graphic Design",
-    "Multimedia-Media",
-    "Multimedia-Mobile Development",
+    // "AC-Juniors instructor",
+    // "AC-Graphic Design instructor",
+    // "AC-Montage instructor",
+    // "Multimedia-Graphic Design",
+    // "Multimedia-Media",
+    // "Multimedia-Mobile Development",
     "Multimedia-Web Development",
-    "Multimedia-Podcast",
-    "Multimedia-Social Media",
+    // "Multimedia-Podcast",
+    // "Multimedia-Social Media",
     "IR-Logistics",
     "IR-Decoration, Coordination And Reception",
-    "IR-HR and QC",
-    "ER-Public Relations",
+    // "IR-HR and QC",
+    // "ER-Public Relations",
     "ER-Business Development",
-    "Events-Technical Team",
+    // "Events-Technical Team",
 ];
 
 export const questions: QuestionsObject = {
