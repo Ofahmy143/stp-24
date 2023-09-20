@@ -3,6 +3,8 @@ import styled from "styled-components";
 import puzzleUp from "../../../assets/orientation/Form/puxxle-up.svg";
 import puzzleDown from "../../../assets/orientation/Form/puxxle-down.svg";
 import SubmitBtn from "../../../assets/orientation/Form/Submit-Button.svg";
+import Success from "../../../assets/orientation/Form/success.png";
+
 import { useRef, useState } from "react";
 import { OrganizationUser } from "../../../types";
 import axios from "axios";
@@ -96,9 +98,11 @@ const OrientationFormBox = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+const SuccessMessage = styled.img``;
 export const OrientationForm = () => {
     const [requestData, setRequestData] = useState<OrganizationUser>({});
-
+    const [success, setSuccess] = useState<boolean>(false);
     const submitHandle = async () => {
         const API_URL = "";
         console.warn(requestData);
@@ -106,6 +110,7 @@ export const OrientationForm = () => {
         //     try {
         //         const response = await axios.post(API_URL, requestRef.current);
         //         console.warn(response.data);
+        setSuccess(true);
         //     } catch (error) {
         //         console.error((error as Error).message);
         //     }
@@ -115,53 +120,62 @@ export const OrientationForm = () => {
         <OrientationFormWrap>
             <PuzzleUpForm src={puzzleUp} />
             <PuzzleDownForm src={puzzleDown} />
-            <OrientationFormBox>
-                <OrientationFormInput
-                    type="text"
-                    placeholder="Name"
-                    onChange={(e) => {
-                        setRequestData({
-                            ...requestData,
-                            name: e.target.value,
-                        });
-                    }}
-                />
-                <PhoneInput>
-                    <span>+20</span>
-                    <input
-                        pattern=""
-                        type="text"
-                        placeholder="phone"
-                        onChange={(e) => {
-                            setRequestData({
-                                ...requestData,
-                                phoneNumber: e.target.value,
-                            });
-                        }}
-                    />
-                </PhoneInput>
-                <OrientationFormInput
-                    type="email"
-                    placeholder="email"
-                    onChange={(e) => {
-                        setRequestData({
-                            ...requestData,
-                            email: e.target.value,
-                        });
-                    }}
-                />
-                <OrientationFormInput
-                    type="text"
-                    placeholder="area of residence"
-                    onChange={(e) => {
-                        setRequestData({
-                            ...requestData,
-                            areaOfResidency: e.target.value,
-                        });
-                    }}
-                />
-            </OrientationFormBox>
-            <SubmitButton src={SubmitBtn} onClick={submitHandle} />
+            {!success && (
+                <>
+                    <OrientationFormBox>
+                        <OrientationFormInput
+                            type="text"
+                            placeholder="Name"
+                            onChange={(e) => {
+                                setRequestData({
+                                    ...requestData,
+                                    name: e.target.value,
+                                });
+                            }}
+                        />
+                        <PhoneInput>
+                            <span>+20</span>
+                            <input
+                                pattern=""
+                                type="text"
+                                placeholder="phone"
+                                onChange={(e) => {
+                                    setRequestData({
+                                        ...requestData,
+                                        phoneNumber: e.target.value,
+                                    });
+                                }}
+                            />
+                        </PhoneInput>
+                        <OrientationFormInput
+                            type="email"
+                            placeholder="email"
+                            onChange={(e) => {
+                                setRequestData({
+                                    ...requestData,
+                                    email: e.target.value,
+                                });
+                            }}
+                        />
+                        <OrientationFormInput
+                            type="text"
+                            placeholder="area of residence"
+                            onChange={(e) => {
+                                setRequestData({
+                                    ...requestData,
+                                    areaOfResidency: e.target.value,
+                                });
+                            }}
+                        />
+                    </OrientationFormBox>
+                    <SubmitButton src={SubmitBtn} onClick={submitHandle} />
+                </>
+            )}
+            {success && (
+                <>
+                    <SuccessMessage src={Success} />
+                </>
+            )}
         </OrientationFormWrap>
     );
 };
