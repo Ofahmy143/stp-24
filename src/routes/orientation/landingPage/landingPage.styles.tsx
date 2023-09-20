@@ -121,14 +121,18 @@ export const ApplyButton = styled.img`
     bottom: 5%;
     cursor: pointer;
     z-index: 3;
-    && :hover {
-        filter: drop-shadow();
+    &:hover {
+        filter: drop-shadow(10px 5px 10px #c82342);
+    }
+    &:active {
+        transform: scale(0.9);
+        filter: drop-shadow(7px 5px 10px #c82342);
     }
     @media ${devices.laptop} {
         width: 25%;
     }
     @media ${devices.tablet} {
-        width: 40%;
+        width: 45%;
         bottom: 10%;
         /* transform: scale(1.5); */
     }
