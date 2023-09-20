@@ -5,7 +5,7 @@ import puzzleDown from "../../../assets/orientation/Form/puxxle-down.svg";
 import SubmitBtn from "../../../assets/orientation/Form/Submit-Button.svg";
 import Success from "../../../assets/orientation/Form/success.png";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { OrganizationUser } from "../../../types";
 import axios from "axios";
 
@@ -101,7 +101,12 @@ const OrientationFormBox = styled.div`
 
 const SuccessMessage = styled.img``;
 export const OrientationForm = () => {
-    const [requestData, setRequestData] = useState<OrganizationUser>({});
+    const [requestData, setRequestData] = useState<OrganizationUser>({
+        name: "",
+        phoneNumber: "",
+        email: "",
+        areaOfResidency: "",
+    } as OrganizationUser);
     const [success, setSuccess] = useState<boolean>(false);
     const submitHandle = async () => {
         const API_URL =
