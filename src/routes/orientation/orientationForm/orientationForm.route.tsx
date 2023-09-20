@@ -9,15 +9,44 @@ import { useState } from "react";
 import { OrganizationUser } from "../../../types";
 import axios from "axios";
 
+export const sizes = {
+    mobile: "320px",
+    tablet: "768px",
+    laptop: "1024px",
+    desktop: "2560px",
+};
+
+export const devices = {
+    mobile: `(max-width: ${sizes.mobile})`,
+    tablet: `(max-width: ${sizes.tablet})`,
+    laptop: `(max-width: ${sizes.laptop})`,
+    desktop: `(max-width: ${sizes.desktop})`,
+};
+
 const PuzzleUpForm = styled.img`
     position: absolute;
     right: 20%;
+    @media ${devices.laptop} {
+        width: 25%;
+        right: 10%;
+        bottom: 30%;
+    }
+    @media ${devices.tablet} {
+        width: 25%;
+    }
 `;
 
 const PuzzleDownForm = styled.img`
     position: absolute;
     left: 30%;
     bottom: 20%;
+    @media ${devices.laptop} {
+        width: 25%;
+        left: 10%;
+    }
+    @media ${devices.tablet} {
+        width: 25%;
+    }
 `;
 
 const OrientationFormWrap = styled.div`
@@ -79,6 +108,7 @@ const PhoneInput = styled.div`
 
 const SubmitButton = styled.img`
     width: 15%;
+    z-index: 2;
     &:hover {
         filter: drop-shadow(10px 5px 10px #f5e9c6);
     }
@@ -86,10 +116,16 @@ const SubmitButton = styled.img`
         transform: scale(0.9);
         filter: drop-shadow(7px 5px 10px #f5e9c6);
     }
+    @media ${devices.laptop} {
+        width: 25%;
+    }
+    @media ${devices.tablet} {
+        width: 40%;
+    }
 `;
 
 const OrientationFormBox = styled.div`
-    width: 40%;
+    width: 45%;
     z-index: 1;
     /* padding: 20px; */
     display: flex;
@@ -97,6 +133,12 @@ const OrientationFormBox = styled.div`
     gap: 20px;
     justify-content: center;
     align-items: center;
+    @media (max-width: 1600px) {
+        width: 60%;
+    }
+    @media ${devices.laptop} {
+        width: 90%;
+    }
 `;
 
 const SuccessMessage = styled.img``;
@@ -115,7 +157,7 @@ export const OrientationForm = () => {
 
         try {
             const response = await axios.post(API_URL, requestData);
-            console.warn(response.data);
+            console.warn({ data: response.data });
             setSuccess(true);
         } catch (error) {
             console.error((error as Error).message);
