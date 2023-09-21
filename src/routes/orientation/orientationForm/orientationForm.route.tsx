@@ -36,7 +36,7 @@ const PuzzleUpForm = styled.img`
     @media ${devices.laptop} {
         width: 25%;
         right: 10%;
-        bottom: 30%;
+        bottom: 40%;
     }
     @media ${devices.tablet} {
         width: 25%;
@@ -46,7 +46,7 @@ const PuzzleUpForm = styled.img`
 const PuzzleDownForm = styled.img`
     position: absolute;
     left: 30%;
-    bottom: 20%;
+    bottom: 30%;
     @media ${devices.laptop} {
         width: 25%;
         left: 10%;
@@ -149,7 +149,9 @@ const OrientationFormBox = styled.form`
 `;
 
 const SuccessMessage = styled.h1`
-    width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 70%;
     text-align: center;
     color: white;
     /* -webkit-text-stroke:5px black; */
@@ -159,12 +161,16 @@ const SuccessMessage = styled.h1`
     font-family: "Baloo Tammudu";
     font-weight: 700;
     font-size: 150px;
+    position: absolute;
+    top: 15%;
     /* border: 1px solid white; */
     z-index: 10;
     @media ${devices.laptop} {
         font-size: 90px;
     }
     @media (max-width: 460px) {
+        top: 30%;
+        width: 100%;
         font-size: 60px;
     }
     @media ${devices.mobile} {
@@ -173,7 +179,7 @@ const SuccessMessage = styled.h1`
 `;
 
 const ThanksMsg = styled.div`
-    text-align:center;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -232,7 +238,7 @@ export const OrientationForm = () => {
         try {
             const response = await axios.post(API_URL, requestData);
             console.warn({ data: response });
-        setSuccess(true);
+            setSuccess(true);
         } catch (error) {
             showErrorToastMessage(`You can't register twice`);
             console.error((error as Error).message);
