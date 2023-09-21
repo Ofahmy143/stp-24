@@ -5,10 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import puzzleUp from "../../../assets/orientation/Form/puxxle-up.svg";
 import puzzleDown from "../../../assets/orientation/Form/puxxle-down.svg";
 import SubmitBtn from "../../../assets/orientation/Form/Submit-Button.svg";
-import Success from "../../../assets/orientation/Form/success.png";
 import StpLogo from "../../../assets/orientation/landing-page/stp-logo.svg";
 import LevelUp from "../../../assets/orientation/Form/levelup-yellow.svg";
-import WhatsappGif from "../../../assets/orientation/Form/icons8-whatsapp.gif";
 import {
     StpLogoSvg,
     LevelupSvg,
@@ -207,7 +205,7 @@ export const OrientationForm = () => {
         });
     };
 
-    const submitHandle = async (e) => {
+    const submitHandle = async (e: React.MouseEvent<HTMLImageElement>) => {
         e.preventDefault();
 
         if (requestData.name.trim() === "") {
