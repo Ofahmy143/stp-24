@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import puzzleUp from "../../../assets/orientation/Form/puxxle-up.svg";
 import puzzleDown from "../../../assets/orientation/Form/puxxle-down.svg";
@@ -8,7 +8,7 @@ import SubmitBtn from "../../../assets/orientation/Form/Submit-Button.svg";
 import Success from "../../../assets/orientation/Form/success.png";
 import StpLogo from "../../../assets/orientation/landing-page/stp-logo.svg";
 import LevelUp from "../../../assets/orientation/Form/levelup-yellow.svg";
-
+import WhatsappGif from "../../../assets/orientation/Form/icons8-whatsapp.gif";
 import {
     StpLogoSvg,
     LevelupSvg,
@@ -133,7 +133,7 @@ const SubmitButton = styled.img`
     }
 `;
 
-const OrientationFormBox = styled.div`
+const OrientationFormBox = styled.form`
     width: 45%;
     z-index: 1;
     /* padding: 20px; */
@@ -154,6 +154,11 @@ const SuccessMessage = styled.img`
     z-index: 10;
 `;
 
+const ThanksMsg = styled.div`
+    font-family: "Be Vietnam Pro Light";
+    font-size: 16px;
+`;
+
 export const OrientationForm = () => {
     const [requestData, setRequestData] = useState<OrganizationUser>({
         name: "",
@@ -169,7 +174,28 @@ export const OrientationForm = () => {
         });
     };
 
-    const submitHandle = async () => {
+    const submitHandle = async (e) => {
+        e.preventDefault();
+
+        if (requestData.name.trim() === '') {
+            toast.error('Name cannot be empty');
+            return;
+          }
+
+        const phonePattern = new RegExp('^(0|1)[0-9]{9}$');
+        if (!phonePattern.test(requestData.phoneNumber)) {
+          toast.error('Invalid phone number');
+          return;
+        }
+      
+        const emailPattern = new RegExp('^\\S+@\\S+\\.\\S+$');
+        if (!emailPattern.test(requestData.email)) {
+          toast.error('Invalid email address');
+          return;
+        }
+      
+
+
         const API_URL =
             "https://stp-24.onrender.com/member-registration/add-user";
         // console.warn(requestData);
@@ -207,8 +233,7 @@ export const OrientationForm = () => {
                             pauseOnHover
                             theme="light"
                         />
-                        
-                        
+
                         <OrientationFormInput
                             type="text"
                             placeholder="Name"
@@ -222,7 +247,6 @@ export const OrientationForm = () => {
                         <PhoneInput>
                             <span>+20</span>
                             <input
-                                pattern=""
                                 type="text"
                                 placeholder="phone"
                                 onChange={(e) => {
@@ -237,6 +261,7 @@ export const OrientationForm = () => {
                             type="email"
                             placeholder="email"
                             onChange={(e) => {
+
                                 setRequestData({
                                     ...requestData,
                                     email: e.target.value,
@@ -254,12 +279,30 @@ export const OrientationForm = () => {
                             }}
                         />
                     </OrientationFormBox>
-                    <SubmitButton src={SubmitBtn} onClick={submitHandle} />
+                        <SubmitButton src={SubmitBtn} onClick={submitHandle} />
                 </>
             )}
             {success && (
                 <>
                     <SuccessMessage src={Success} />
+                    <ThanksMsg>
+                        <p>
+                            Please join this WhatsApp group to keep updated to
+                            any news
+                        </p>
+                        <img src={WhatsappGif} alt="whatsApp gif" />
+                        <iframe
+                            src="https://giphy.com/embed/EY5vE2mzY2BqWAblWD"
+                            width="100"
+                            height="100"
+                            // frameBorder="0"
+                            // class="giphy-embed"
+                            allowFullScreen
+                        ></iframe>
+                        <a href="https://chat.whatsapp.com/IQew0pdD3LK51NKWsMdgKX">
+                            WhatsApp Group
+                        </a>
+                    </ThanksMsg>
                 </>
             )}
         </OrientationFormWrap>
