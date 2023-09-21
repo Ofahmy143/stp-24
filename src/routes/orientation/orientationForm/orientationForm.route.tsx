@@ -1,10 +1,19 @@
 import styled from "styled-components";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 import puzzleUp from "../../../assets/orientation/Form/puxxle-up.svg";
 import puzzleDown from "../../../assets/orientation/Form/puxxle-down.svg";
 import SubmitBtn from "../../../assets/orientation/Form/Submit-Button.svg";
 import Success from "../../../assets/orientation/Form/success.png";
+import StpLogo from "../../../assets/orientation/landing-page/stp-logo.svg";
+import LevelUp from "../../../assets/orientation/Form/levelup-yellow.svg";
 
+import {
+    StpLogoSvg,
+    LevelupSvg,
+    LandingNav,
+} from "../landingPage/landingPage.styles";
 import { useState } from "react";
 import { OrganizationUser } from "../../../types";
 import axios from "axios";
@@ -141,7 +150,10 @@ const OrientationFormBox = styled.div`
     }
 `;
 
-const SuccessMessage = styled.img``;
+const SuccessMessage = styled.img`
+    z-index: 10;
+`;
+
 export const OrientationForm = () => {
     const [requestData, setRequestData] = useState<OrganizationUser>({
         name: "",
@@ -150,27 +162,53 @@ export const OrientationForm = () => {
         areaOfResidency: "",
     } as OrganizationUser);
     const [success, setSuccess] = useState<boolean>(false);
+
+    const showErrorToastMessage = () => {
+        toast.error("Error: can't register twice", {
+            position: toast.POSITION.TOP_RIGHT,
+        });
+    };
+
     const submitHandle = async () => {
         const API_URL =
             "https://stp-24.onrender.com/member-registration/add-user";
-        console.warn(requestData);
+        // console.warn(requestData);
 
         try {
             const response = await axios.post(API_URL, requestData);
-            console.warn({ data: response.data });
+            console.warn({ data: response });
             setSuccess(true);
         } catch (error) {
+            showErrorToastMessage();
             console.error((error as Error).message);
         }
     };
 
     return (
         <OrientationFormWrap>
+            <LandingNav>
+                <StpLogoSvg src={StpLogo} />
+                <LevelupSvg src={LevelUp} />
+            </LandingNav>
             <PuzzleUpForm src={puzzleUp} />
             <PuzzleDownForm src={puzzleDown} />
             {!success && (
                 <>
                     <OrientationFormBox>
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                        />
+                        
+                        
                         <OrientationFormInput
                             type="text"
                             placeholder="Name"
