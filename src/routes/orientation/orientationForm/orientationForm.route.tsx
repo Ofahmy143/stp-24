@@ -231,14 +231,14 @@ export const OrientationForm = () => {
             "https://stp-24.onrender.com/member-registration/add-user";
         // console.warn(requestData);
 
-        // try {
-        //     const response = await axios.post(API_URL, requestData);
-        //     console.warn({ data: response });
+        try {
+            const response = await axios.post(API_URL, requestData);
+            console.warn({ data: response });
         setSuccess(true);
-        // } catch (error) {
-        //     showErrorToastMessage(`You can't register twice`);
-        //     console.error((error as Error).message);
-        // }
+        } catch (error) {
+            showErrorToastMessage(`You can't register twice`);
+            console.error((error as Error).message);
+        }
     };
 
     return (
