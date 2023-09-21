@@ -11,6 +11,11 @@ body {
     font-family: "Be Vietnam Pro Light";
     src: url("./assets/orientation/Form/BeVietnamPro-Light.ttf");
 }
+
+@font-face {
+  font-family: "Baloo Tammudu";
+  src: url("./assets/orientation/Form/BalooTammudu2-VariableFont_wght.ttf");
+}
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

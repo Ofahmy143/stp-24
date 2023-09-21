@@ -150,13 +150,46 @@ const OrientationFormBox = styled.form`
     }
 `;
 
-const SuccessMessage = styled.img`
+const SuccessMessage = styled.h1`
+    width: 100%;
+    text-align: center;
+    color: white;
+    /* -webkit-text-stroke:5px black; */
+    text-shadow: -1px -1px 5px #000, 1px -1px 5px #000, -1px 1px 5px #000,
+        1px 1px 5px #000;
+
+    font-family: "Baloo Tammudu";
+    font-weight: 700;
+    font-size: 150px;
+    /* border: 1px solid white; */
     z-index: 10;
+    @media ${devices.laptop} {
+        font-size: 90px;
+    }
+    @media (max-width: 460px) {
+        font-size: 60px;
+    }
+    @media ${devices.mobile} {
+        font-size: 50px;
+    }
 `;
 
 const ThanksMsg = styled.div`
+    text-align:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 8%;
     font-family: "Be Vietnam Pro Light";
-    font-size: 16px;
+    font-size: 22px;
+    z-index: 11;
+    color: #f5e9c6;
+    & a {
+        color: #f5e9c6;
+        font-size: 1em;
+    }
 `;
 
 export const OrientationForm = () => {
@@ -168,8 +201,8 @@ export const OrientationForm = () => {
     } as OrganizationUser);
     const [success, setSuccess] = useState<boolean>(false);
 
-    const showErrorToastMessage = () => {
-        toast.error("Error: can't register twice", {
+    const showErrorToastMessage = (message: string) => {
+        toast.error(message, {
             position: toast.POSITION.TOP_RIGHT,
         });
     };
@@ -177,37 +210,35 @@ export const OrientationForm = () => {
     const submitHandle = async (e) => {
         e.preventDefault();
 
-        if (requestData.name.trim() === '') {
-            toast.error('Name cannot be empty');
+        if (requestData.name.trim() === "") {
+            showErrorToastMessage("Name cannot be empty");
             return;
-          }
+        }
 
-        const phonePattern = new RegExp('^(0|1)[0-9]{9}$');
+        const phonePattern = new RegExp("^(0|1)[0-9]{9}$");
         if (!phonePattern.test(requestData.phoneNumber)) {
-          toast.error('Invalid phone number');
-          return;
+            showErrorToastMessage("Invalid phone number");
+            return;
         }
-      
-        const emailPattern = new RegExp('^\\S+@\\S+\\.\\S+$');
-        if (!emailPattern.test(requestData.email)) {
-          toast.error('Invalid email address');
-          return;
-        }
-      
 
+        const emailPattern = new RegExp("^\\S+@\\S+\\.\\S+$");
+        if (!emailPattern.test(requestData.email)) {
+            showErrorToastMessage("Invalid email address");
+            return;
+        }
 
         const API_URL =
             "https://stp-24.onrender.com/member-registration/add-user";
         // console.warn(requestData);
 
-        try {
-            const response = await axios.post(API_URL, requestData);
-            console.warn({ data: response });
-            setSuccess(true);
-        } catch (error) {
-            showErrorToastMessage();
-            console.error((error as Error).message);
-        }
+        // try {
+        //     const response = await axios.post(API_URL, requestData);
+        //     console.warn({ data: response });
+        setSuccess(true);
+        // } catch (error) {
+        //     showErrorToastMessage(`You can't register twice`);
+        //     console.error((error as Error).message);
+        // }
     };
 
     return (
@@ -261,7 +292,6 @@ export const OrientationForm = () => {
                             type="email"
                             placeholder="email"
                             onChange={(e) => {
-
                                 setRequestData({
                                     ...requestData,
                                     email: e.target.value,
@@ -279,26 +309,27 @@ export const OrientationForm = () => {
                             }}
                         />
                     </OrientationFormBox>
-                        <SubmitButton src={SubmitBtn} onClick={submitHandle} />
+                    <SubmitButton src={SubmitBtn} onClick={submitHandle} />
                 </>
             )}
             {success && (
                 <>
-                    <SuccessMessage src={Success} />
+                    {/* <SuccessMessage src={Success} /> */}
+                    <SuccessMessage>Thanks For Applying</SuccessMessage>
                     <ThanksMsg>
                         <p>
                             Please join this WhatsApp group to keep updated to
                             any news
                         </p>
-                        <img src={WhatsappGif} alt="whatsApp gif" />
-                        <iframe
+                        {/* <img src={WhatsappGif} alt="whatsApp gif" /> */}
+                        {/* <iframe
                             src="https://giphy.com/embed/EY5vE2mzY2BqWAblWD"
                             width="100"
                             height="100"
                             // frameBorder="0"
                             // class="giphy-embed"
                             allowFullScreen
-                        ></iframe>
+                        ></iframe> */}
                         <a href="https://chat.whatsapp.com/IQew0pdD3LK51NKWsMdgKX">
                             WhatsApp Group
                         </a>
