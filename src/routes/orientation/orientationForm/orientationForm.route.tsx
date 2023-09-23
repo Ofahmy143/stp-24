@@ -287,7 +287,7 @@ export const OrientationForm = () => {
                         <PhoneInput>
                             <span>+20</span>
                             <input
-                                type="text"
+                                type="tel"
                                 placeholder="phone"
                                 onChange={(e) => {
                                     setRequestData({
