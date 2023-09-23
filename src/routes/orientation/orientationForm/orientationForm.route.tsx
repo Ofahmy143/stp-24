@@ -14,6 +14,7 @@ import {
 } from "../landingPage/landingPage.styles";
 import { useState } from "react";
 import { OrganizationUser } from "../../../types";
+import { Vortex } from "react-loader-spinner";
 import axios from "axios";
 
 export const sizes = {
@@ -197,6 +198,7 @@ const ThanksMsg = styled.div`
 `;
 
 export const OrientationForm = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [requestData, setRequestData] = useState<OrganizationUser>({
         name: "",
         phoneNumber: "",
@@ -209,11 +211,12 @@ export const OrientationForm = () => {
         toast.error(message, {
             position: toast.POSITION.TOP_RIGHT,
         });
+        setIsLoading(false);
     };
 
     const submitHandle = async (e: React.MouseEvent<HTMLImageElement>) => {
         e.preventDefault();
-
+        setIsLoading(true);
         if (requestData.name.trim() === "") {
             showErrorToastMessage("Name cannot be empty");
             return;
@@ -239,10 +242,12 @@ export const OrientationForm = () => {
             const response = await axios.post(API_URL, requestData);
             console.warn({ data: response });
             setSuccess(true);
+            setIsLoading(false);
         } catch (error) {
             showErrorToastMessage(`You can't register twice`);
             console.error((error as Error).message);
         }
+        
     };
 
     return (
@@ -313,7 +318,27 @@ export const OrientationForm = () => {
                             }}
                         />
                     </OrientationFormBox>
-                    <SubmitButton src={SubmitBtn} onClick={submitHandle} />
+                    {!isLoading && (
+                        <SubmitButton src={SubmitBtn} onClick={submitHandle} />
+                    )}
+                    {isLoading && (
+                        <Vortex
+                            visible={true}
+                            height="80"
+                            width="80"
+                            ariaLabel="vortex-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="vortex-wrapper"
+                            colors={[
+                                "#f5e9c6",
+                                "#f5e9c6",
+                                "#f5e9c6",
+                                "#f5e9c6",
+                                "#f5e9c6",
+                                "#f5e9c6",
+                            ]}
+                        />
+                    )}
                 </>
             )}
             {success && (
