@@ -1,5 +1,4 @@
 export type Question = {
-  title: string;
   pageQuestions: PageQuestion[];
 };
 
@@ -22,11 +21,10 @@ export type PageQuestion = {
   placeholder?: string;
 };
 
-export type QuestionsObject = { [key: number]: Question };
+export type QuestionsObject = { [key: string]: Question };
 
 export const questions: QuestionsObject = {
-  1: {
-    title: "",
+  "MainQuestions": {
     pageQuestions: [
       {
         question: "full name",
@@ -66,41 +64,12 @@ export const questions: QuestionsObject = {
       },
     ],
   },
-  2: {
-    title: "Team leader",
+  SubQuestions: {
     pageQuestions: [
       {
         question: "CV (google drive link)",
         type: QuestionTypeEnum.FILE_UPLOAD,
         name: "CV",
-        regex: "",
-      },
-    ],
-  },
-  3: {
-    title: "Team leader",
-    pageQuestions: [
-      {
-        question: "CV (google drive link)",
-        type: QuestionTypeEnum.FILE_UPLOAD,
-        name: "CV",
-        regex: "",
-      },
-    ],
-  },
-  6: {
-    title: "",
-    pageQuestions: [
-      {
-        question: "How did you know about the competition?",
-        type: QuestionTypeEnum.ESSAY,
-        name: "essayQuesOne",
-        regex: "",
-      },
-      {
-        question: "Why do you want to join the competition?",
-        type: QuestionTypeEnum.ESSAY,
-        name: "essayQuesTwo",
         regex: "",
       },
     ],
