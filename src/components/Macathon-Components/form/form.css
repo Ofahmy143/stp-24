@@ -1,0 +1,58 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("../../../assets/Macathon-form/background.png");
+  background-color: #751231;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.mainForm {
+  background-image: url("../../../assets/Macathon-form/formStructure.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  min-height: 800px;
+  width: 30%;
+  padding: 10px 50px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-around;
+}
+
+.formQuestions {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstQuestionSpace {
+  margin-top: 120px;
+}
+
+.movingButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 77%;
+  margin:0px auto;
+  margin-bottom:40px;
+}

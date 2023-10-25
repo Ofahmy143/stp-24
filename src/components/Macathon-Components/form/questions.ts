@@ -3,7 +3,7 @@ export type Question = {
   pageQuestions: PageQuestion[];
 };
 
-enum QuestionTypeEnum {
+export enum QuestionTypeEnum {
   NORMAL_TEXT = "text",
   EMAIL = "email",
   NUMBER = "number",
@@ -22,10 +22,10 @@ export type PageQuestion = {
   placeholder?: string;
 };
 
-export type QuestionsObject = { [key: string]: Question };
+export type QuestionsObject = { [key: number]: Question };
 
 export const questions: QuestionsObject = {
-  "mainPage": {
+  1: {
     title: "",
     pageQuestions: [
       {
@@ -66,7 +66,7 @@ export const questions: QuestionsObject = {
       },
     ],
   },
-  "secondPage": {
+  2: {
     title: "Team leader",
     pageQuestions: [
       {
@@ -77,8 +77,19 @@ export const questions: QuestionsObject = {
       },
     ],
   },
-  "lastPage": {
-    title:"",
+  3: {
+    title: "Team leader",
+    pageQuestions: [
+      {
+        question: "CV (google drive link)",
+        type: QuestionTypeEnum.FILE_UPLOAD,
+        name: "CV",
+        regex: "",
+      },
+    ],
+  },
+  6: {
+    title: "",
     pageQuestions: [
       {
         question: "How did you know about the competition?",
@@ -95,4 +106,3 @@ export const questions: QuestionsObject = {
     ],
   },
 };
-

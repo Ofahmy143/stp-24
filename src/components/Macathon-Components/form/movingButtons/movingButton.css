@@ -1,0 +1,8 @@
+.movingButton {
+  background-color: #7d142e;
+  color: white;
+  padding: 7px 20px;
+  font-size: 20px;
+  font-weight: 1000;
+  cursor: pointer;
+}
