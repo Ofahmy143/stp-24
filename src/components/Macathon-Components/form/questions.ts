@@ -64,7 +64,7 @@ export const questions: QuestionsObject = {
       },
     ],
   },
-  SubQuestions: {
+  "SubQuestions": {
     pageQuestions: [
       {
         question: "CV (google drive link)",
