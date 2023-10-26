@@ -1,7 +1,12 @@
 .formTitle {
-    font-size: 30px;
-    font-weight: 1000;
-    text-align: center;
-    display:inline;
-    margin:0px 0px;
+  font-size: 45px;
+  font-weight: lighter;
+  letter-spacing: 3px;
+  text-align: center;
+  display: inline;
+  margin: 0px 0px;
+}
+
+.formTitle h1 {
+  margin: 0px 0px;
 }

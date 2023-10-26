@@ -1,8 +1,6 @@
 @font-face{
   font-family:'Jomhurya';
   src:url("../../../assets/Macathon-form/fonts/Jomhuria-Regular.ttf") format('truetype');
-  font-weight:normal;
-  font-style:normal
 }
 html,
 body {
@@ -25,7 +23,7 @@ body {
   background-repeat: no-repeat;
   width: 30%;
   min-height: 750px;
-  padding: 70px 50px;
+  padding: 90px 50px;
   position: relative;
   overflow: hidden;
   margin: 20px auto;

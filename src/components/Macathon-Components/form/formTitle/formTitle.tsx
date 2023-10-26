@@ -3,7 +3,7 @@ import "./formTitle.css";
 const formTitle = ({ title }: { title: string }) => {
   return (
     <div className="formTitle">
-      <p>{title}</p>
+      <h1>{title}</h1>
     </div>
   );
 };

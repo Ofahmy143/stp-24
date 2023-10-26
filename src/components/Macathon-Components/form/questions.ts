@@ -24,7 +24,7 @@ export type PageQuestion = {
 export type QuestionsObject = { [key: string]: Question };
 
 export const questions: QuestionsObject = {
-  "MainQuestions": {
+  "FirstPageQuestions": {
     pageQuestions: [
       {
         question: "full name",
@@ -33,17 +33,22 @@ export const questions: QuestionsObject = {
         regex: "",
       },
       {
-        question: "Email",
+        question: "Team Name",
         type: QuestionTypeEnum.EMAIL,
-        name: "email",
+        name: "teamName",
         regex: "",
       },
       {
-        question: "Phone Number (Whatsapp No.)",
+        question: "Joined As",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "mobile",
+        name: "teamRole",
+        choices:["Leader","Member"],
         regex: "",
       },
+    ],
+  },
+  "SecondPageQuestion": {
+    pageQuestions: [
       {
         question: "University",
         type: QuestionTypeEnum.NORMAL_TEXT,
@@ -60,16 +65,6 @@ export const questions: QuestionsObject = {
         question: "Graduation Year",
         type: QuestionTypeEnum.NUMBER,
         name: "Graduation Year",
-        regex: "",
-      },
-    ],
-  },
-  "SubQuestions": {
-    pageQuestions: [
-      {
-        question: "CV (google drive link)",
-        type: QuestionTypeEnum.FILE_UPLOAD,
-        name: "CV",
         regex: "",
       },
     ],
