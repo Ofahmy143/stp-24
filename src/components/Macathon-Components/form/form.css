@@ -1,13 +1,14 @@
-@font-face{
-  font-family:'Jomhurya';
-  src:url("../../../assets/Macathon-form/fonts/Jomhuria-Regular.ttf") format('truetype');
+@font-face {
+  font-family: "Jomhurya";
+  src: url("../../../assets/Macathon-form/fonts/Jomhuria-Regular.ttf")
+    format("truetype");
 }
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: 'Jomhurya';
+  font-family: "Jomhurya";
 }
 
 body {
@@ -19,7 +20,7 @@ body {
 
 .mainForm {
   background-image: url("../../../assets/Macathon-form/formStructure.png");
-  background-size: contain;
+  background-size: 100% 95%;
   background-repeat: no-repeat;
   width: 30%;
   min-height: 750px;
@@ -30,6 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  min-width: 500px;
 }
 
 .formQuestions {
@@ -54,9 +56,9 @@ body {
   margin: 0px auto;
   margin-bottom: 40px;
 }
-.QuesContainer{
-  display:flex;
+.QuesContainer {
+  display: flex;
   justify-content: space-between;
-  align-items:space-between;
+  align-items: space-between;
   flex-direction: column;
 }

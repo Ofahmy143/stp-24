@@ -6,7 +6,7 @@ type formTwoProps = {
   data: MacathonFormData;
   updateFields: (fields: Partial<MacathonFormData>) => void;
 };
-function SecondFormPage({ data, updateFields }: formTwoProps) {
+function FirstFormPage({ data, updateFields }: formTwoProps) {
   return (
     <div className="QuesContainer">
       <div className="formQuestions">
@@ -19,4 +19,4 @@ function SecondFormPage({ data, updateFields }: formTwoProps) {
   );
 }
 
-export default SecondFormPage;
+export default FirstFormPage;

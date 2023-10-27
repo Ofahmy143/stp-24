@@ -1,11 +1,15 @@
 export type MacathonFormData = {
     fullName: string;
+    national_id:string;
     email: string;
+    phone_number:string;
+    university: string;
+    faculty: string;
+    graduation_year: number;
     teamName: string;
     teamRole: string;
-    faculty: string;
-    gradYear: number;
     cv: string;
-    university: string;
+    q1:string;
+    q2:string;
   };
   

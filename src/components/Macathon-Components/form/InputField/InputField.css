@@ -16,4 +16,52 @@
 .InputFieldMacathon::placeholder {
   text-align: center;
 }
+.inputBox {
+  position: relative;
+}
 
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+}
+
+.inputBox span {
+  position: absolute;
+  left: 0%;
+  top: 20%;
+  padding: 10px 10px;
+  margin-left: 5px;
+  pointer-events: none;
+  font-size: 2em;
+  z-index: 3;
+  color: #ffffff;
+  text-transform: uppercase;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  width: 100%;
+  text-align: center;
+}
+
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span,
+.has-value ~ span {
+  width: 40%;
+  color: #f1e9c9;
+  font-size: 1.5rem;
+  transform: translateY(-15px) translateX(10px);
+  padding: 0px 0px;
+  -webkit-transform: translateY(-15px) translateX(10px);
+  -moz-transform: translateY(-15px) translateX(10px);
+  -ms-transform: translateY(-15px) translateX(10px);
+  -o-transform: translateY(-15px) translateX(10px);
+  background: #0c4165;
+  border-left: 1px solid #0c4165;
+  border-right: 1px solid #0c4165;
+}

@@ -18,7 +18,7 @@ function ThirdFormPage({ data, updateFields }: formThreeProps) {
       )}
       <div className="QuesContainer">
         <div className="formQuestions">
-          {questions["SecondPageQuestions"].pageQuestions.map(
+          {questions["ThirdPageQuestions"].pageQuestions.map(
             (question: PageQuestion) => getInputField({ question, data,updateFields })
           )}
         </div>

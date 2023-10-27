@@ -1,4 +1,5 @@
-import { MacathonFormData } from "../../../../types/macathon-form-data";
+ import { MacathonFormData } from "../../../../types/macathon-form-data";
+import { SyntheticEvent } from "react";
 
 export function GetVal(data: MacathonFormData, name: string): string | number {
   console.log(data);
@@ -20,29 +21,36 @@ export function GetVal(data: MacathonFormData, name: string): string | number {
     case "teamRole":
       return data["teamRole"];
     default:
-      return "default";
+      return "";
   }
 }
 
-export function setInput(updateFields:(fields:(Partial<MacathonFormData>) => void,name:string)): (e)=>void{
+export function setInput(
+  updateFields: (fields: Partial<MacathonFormData>) => void,
+  name: string
+) {
   switch (name) {
     case "fullName":
-      return {e=>update};
+      return (e: SyntheticEvent) => {
+        console.log(e);
+        updateFields({ fullName: e.target.value });
+      };
     case "email":
-      return data["email"];
+      return (e: SyntheticEvent) => updateFields({ email: e.target.value });
     case "teamName":
-      return data["teamName"];
+      return (e: SyntheticEvent) => updateFields({ teamName: e.target.value });
     case "faculty":
-      return data["faculty"];
+      return (e: SyntheticEvent) => updateFields({ faculty: e.target.value });
     case "university":
-      return data["university"];
+      return (e: SyntheticEvent) =>
+        updateFields({ university: e.target.value });
     case "gradYear":
-      return data["gradYear"];
+      return (e: SyntheticEvent) => updateFields({ gradYear: e.target.value });
     case "cv":
-      return data["cv"];
+      return (e: SyntheticEvent) => updateFields({ cv: e.target.value });
     case "teamRole":
-      return data["teamRole"];
+      return (e: SyntheticEvent) => updateFields({ teamRole: e.target.value });
     default:
-      return "default";
+      return () => updateFields({});
   }
 }

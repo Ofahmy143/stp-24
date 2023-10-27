@@ -1,6 +1,6 @@
-import { MacathonFormData } from "../../../../types/macathon-form-data";
 import "./InputField.css";
-
+import React, { useEffect } from "react";
+import { addClassHasValue } from "./inputField";
 const GenericInput = ({
   question,
   name,
@@ -12,18 +12,25 @@ const GenericInput = ({
   name: string;
   type: string;
   value: string | number;
-  onChange:()=>void
+  onChange: () => void;
 }) => {
+  useEffect(() => {
+    addClassHasValue();
+  }, []); // Empty dependency array ensures this effect runs once after the initial render
+
   return (
-    <input
-      required
-      name={name}
-      type={type}
-      value={value}
-      placeholder={question}
-      onChange={onChange}
-      className="InputFieldMacathon"
-    />
+    <div className="inputBox">
+      <input
+        required
+        name={name}
+        type={type}
+        value={value}
+        onChange={onChange}
+        id={name}
+        className="InputFieldMacathon"
+      />
+      <span>{question}</span>
+    </div>
   );
 };
 

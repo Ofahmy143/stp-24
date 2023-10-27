@@ -24,49 +24,62 @@ export type PageQuestion = {
 export type QuestionsObject = { [key: string]: Question };
 
 export const questions: QuestionsObject = {
-  "FirstPageQuestions": {
+  SecondPageQuestions: {
     pageQuestions: [
       {
         question: "full name",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "name",
+        name: "fullName",
         regex: "",
       },
       {
         question: "Team Name",
-        type: QuestionTypeEnum.EMAIL,
+        type: QuestionTypeEnum.NORMAL_TEXT,
         name: "teamName",
+        regex: "",
+      },
+      {
+        question: "Email",
+        type: QuestionTypeEnum.EMAIL,
+        name: "email",
         regex: "",
       },
       {
         question: "Joined As",
         type: QuestionTypeEnum.NORMAL_TEXT,
         name: "teamRole",
-        choices:["Leader","Member"],
+        choices: ["Leader", "Member"],
         regex: "",
       },
-    ],
-  },
-  "SecondPageQuestion": {
-    pageQuestions: [
       {
         question: "University",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "University",
+        name: "university",
         regex: "",
       },
       {
         question: "Faculty",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "Faculty",
+        name: "faculty",
         regex: "",
       },
       {
         question: "Graduation Year",
         type: QuestionTypeEnum.NUMBER,
-        name: "Graduation Year",
+        name: "gradYear",
         regex: "",
       },
+      {
+        question: "CV(Drive Link)",
+        type: QuestionTypeEnum.NORMAL_TEXT,
+        name: "cv",
+        regex: "",
+      },
+    ],
+  },
+  ThirdPageQuestions: {
+    pageQuestions: [
+
     ],
   },
 };
