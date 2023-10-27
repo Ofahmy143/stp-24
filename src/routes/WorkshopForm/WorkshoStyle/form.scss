@@ -5,6 +5,7 @@
   height: 100vh;
   background-image: url(../../../assets/workshop-form/Frame1.svg);
   background-size: cover;
+  background-position: center;
   padding: 4rem 4rem;
   display: flex;
   flex-direction: row;
@@ -13,25 +14,28 @@
   @media only screen and (max-width: $mobile-screen) {
     gap: 0;
     flex-wrap: wrap;
-    background-image: none;
+    // background-image: none;
+    background-image: url(../../../assets/workshop-form/Frame-1-mobile.svg);
+
+    background-repeat: no-repeat;
     background-color: $main-color;
   }
   position: relative;
-  &::after {
-    position: absolute;
-    content: "";
-    bottom: 0;
-    left: 0;
-    height: 50%;
-    width: 100%;
-    background-image: url(../../../assets/workshop-form/Group.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: none;
-    @media only screen and (max-width: $mobile-screen) {
-      display: block;
-    }
-  }
+  // &::after {
+  //   position: absolute;
+  //   content: "";
+  //   bottom: 0;
+  //   left: 0;
+  //   height: 50%;
+  //   width: 100%;
+  //   background-image: url(../../../assets/workshop-form/Group.svg);
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   display: none;
+  //   @media only screen and (max-width: $mobile-screen) {
+  //     display: block;
+  //   }
+  // }
 }
 
 .form__heading {
@@ -62,12 +66,16 @@
     order: 3;
   }
   &__img {
+    // margin-top: 100px;
     height: 65rem;
     @media only screen and (max-width: $mobile-screen) {
+    margin-top: 0;
+    z-index: 40;
       height: 85rem;
     }
   }
   &__details {
+    // margin-top: 100px;
     position: absolute;
     top: 8rem;
     left: 50%;
@@ -75,6 +83,7 @@
     transform: translateX(-50%);
     width: 40rem;
     @media only screen and (max-width: $mobile-screen) {
+      margin-top: 0;
       min-height: 65rem;
       width: 50rem;
       top: 12rem;
