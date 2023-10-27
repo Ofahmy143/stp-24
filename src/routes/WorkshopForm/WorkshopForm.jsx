@@ -12,6 +12,7 @@ import { GraphicDesign } from "./GraphicDesign";
 import { Montage } from "./Montage";
 import { LastPage } from "./LastPage";
 import { Ajax } from "./helper";
+import { PacmanLoader } from "react-spinners";
 function WorkShopForm() {
   return (
     <div className="form-page">
@@ -48,6 +49,8 @@ function FormDetails() {
   const [q6, setQ6] = useState("");
   const [q7, setQ7] = useState("");
   const [q8, setQ8] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleForm = async function (e) {
     e.preventDefault();
     const workshopParticipant = {
@@ -69,11 +72,18 @@ function FormDetails() {
       q7: q7 || ".",
       q8: q8 || ".",
     };
-    await Ajax(
-      "https://stp-24.onrender.com/workshop-registeration/add-participant",
-      workshopParticipant
-    );
-    console.log(workshopParticipant);
+    try {
+      setLoading(true);
+      await Ajax(
+        "https://stp-24.onrender.com/workshop-registeration/add-participant",
+        workshopParticipant
+      );
+      setSuccess(true);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      alert('Something went wrong please try again'+error.message);
+    }
   };
   const handleNextButton = function (e) {
     e.preventDefault();
@@ -104,7 +114,14 @@ function FormDetails() {
     else setPage((p) => p - 1);
   };
   return (
-    <form className="form__details" onSubmit={handleForm}>
+    <>
+    {success && (
+      <h1 className="success-msg">Thank You For Submitting</h1>
+    )}
+    {
+      !success && 
+      (
+      <form className="form__details" onSubmit={handleForm}>
       {page === 1 && (
         <PageOne
           fullName={fullName}
@@ -199,12 +216,22 @@ function FormDetails() {
             next
           </button>
         ) : (
-          <button type="submit" className="button">
+          <>
+          {!loading &&(
+            <button type="submit" className="button">
             submit
           </button>
+)}
+              <PacmanLoader color="#7D142E" loading={loading} size={20}/>
+          
+          </>
         )}
       </div>
     </form>
+      )
+    }
+        </>
+
   );
 }
 export default WorkShopForm;
