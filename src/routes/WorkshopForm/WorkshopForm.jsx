@@ -59,15 +59,15 @@ function FormDetails() {
       university,
       graduation_year: graduation,
       workshop: selectedCourse1,
-      // workshop2: selectedCourse2,
+      workshopSecondPref: selectedCourse2,
       q1,
       q2,
       q3,
       q4,
       q5,
       q6,
-      q7: "yes",
-      // q8,
+      q7: q7 || ".",
+      q8: q8 || ".",
     };
     await Ajax(
       "https://stp-24.onrender.com/workshop-registeration/add-participant",
