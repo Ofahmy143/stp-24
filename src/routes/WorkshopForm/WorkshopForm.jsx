@@ -73,6 +73,11 @@ function FormDetails() {
       q8: q8 || ".",
     };
     try {
+      if(q1.trim() === "" || q2.trim() === "" | q3.trim() === "" ){
+        alert("Fill All page questions")
+        return
+      }
+      console.log(workshopParticipant)
       setLoading(true);
       await Ajax(
         "https://stp-24.onrender.com/workshop-registeration/add-participant",
@@ -82,23 +87,31 @@ function FormDetails() {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      alert('Something went wrong please try again'+error.message);
+      let errorMsg = error.response.data.message;
+      if(errorMsg.length > 155){
+        errorMsg = errorMsg.substring(0, 155)
+      }
+      alert(
+        `Error Occured: ${error.response.data.message ||
+          "Something went wrong"}`
+      );
     }
   };
   const handleNextButton = function (e) {
     e.preventDefault();
     if (page > 3) return;
     if (
-      page === 1 &&
-      (fullName === "" ||
-        nationalId == "" ||
-        email === "" ||
-        phone === "" ||
-        university === "" ||
-        faculty === "" ||
-        graduation === "")
+(      page === 1 &&
+      (fullName.trim() === "" ||
+        nationalId.trim() == "" ||
+        email.trim() === "" ||
+        phone.trim() === "" ||
+        university.trim() === "" ||
+        faculty.trim() === "" ||
+        graduation.trim() === ""))
+        || (page === 3 && (q4.trim() === "" || q5.trim() === "" || q6.trim() === ""))
     ) {
-      alert("fill all inputs First");
+      alert("fill all page inputs First");
       return;
     }
     // if( page === 2 && (selectedCourse1===selectedCourse2) {
@@ -115,123 +128,120 @@ function FormDetails() {
   };
   return (
     <>
-    {success && (
-      <h1 className="success-msg">Thank You For Submitting</h1>
-    )}
-    {
-      !success && 
-      (
-      <form className="form__details" onSubmit={handleForm}>
-      {page === 1 && (
-        <PageOne
-          fullName={fullName}
-          onSetFullname={setFullName}
-          nationalId={nationalId}
-          onSetNationalId={setNationalId}
-          email={email}
-          onSetEmail={setEmail}
-          phone={phone}
-          onSetPhone={setPhone}
-          university={university}
-          onSetUniversity={setUniversity}
-          faculty={faculty}
-          onSetFaculty={setFaculty}
-          graduation={graduation}
-          onSetGraduation={setGraduation}
-        />
+      {success && <h1 className="success-msg">Thank You For Submitting</h1>}
+      {!success && (
+        <form className="form__details" onSubmit={handleForm}>
+          {page === 1 && (
+            <PageOne
+              fullName={fullName}
+              onSetFullname={setFullName}
+              nationalId={nationalId}
+              onSetNationalId={setNationalId}
+              email={email}
+              onSetEmail={setEmail}
+              phone={phone}
+              onSetPhone={setPhone}
+              university={university}
+              onSetUniversity={setUniversity}
+              faculty={faculty}
+              onSetFaculty={setFaculty}
+              graduation={graduation}
+              onSetGraduation={setGraduation}
+            />
+          )}
+          {page === 2 && (
+            <PageTwo
+              selectedCourse1={selectedCourse1}
+              selectedCourse2={selectedCourse2}
+              onSetCourse1={setSelectedCourse1}
+              onSetCourse2={setSelectedCourse2}
+            />
+          )}
+          {page === 3 && selectedCourse1 === "Montage" && <Montage />}
+          {page === 3 && selectedCourse1 === "Python" && (
+            <Python
+              q4={q4}
+              q5={q5}
+              q6={q6}
+              q7={q7}
+              onSetQ4={setQ4}
+              onSetQ5={setQ5}
+              onSetQ6={setQ6}
+              onSetQ7={setQ7}
+            />
+          )}
+          {page === 3 && selectedCourse1 === "Machine-learning" && (
+            <MachineLearning
+              q4={q4}
+              q5={q5}
+              q6={q6}
+              onSetQ4={setQ4}
+              onSetQ5={setQ5}
+              onSetQ6={setQ6}
+            />
+          )}
+          {page === 3 && selectedCourse1 === "Graphic-desgin" && (
+            <GraphicDesign
+              q4={q4}
+              q5={q5}
+              q6={q6}
+              q7={q7}
+              q8={q8}
+              onSetQ4={setQ4}
+              onSetQ5={setQ5}
+              onSetQ6={setQ6}
+              onSetQ7={setQ7}
+              onSetQ8={setQ8}
+            />
+          )}
+          {page === 3 && selectedCourse1 === "Front-end" && (
+            <FrontEnd
+              q4={q4}
+              q5={q5}
+              q6={q6}
+              onSetQ4={setQ4}
+              onSetQ5={setQ5}
+              onSetQ6={setQ6}
+            />
+          )}
+          {page === 4 && (
+            <LastPage
+              q1={q1}
+              onSetQ1={setQ1}
+              q2={q2}
+              onSetQ2={setQ2}
+              q3={q3}
+              onSetQ3={setQ3}
+            />
+          )}
+          <div className="form__button">
+            {!loading && (
+              <>
+                {page > 1 && (
+                  <button className="button" onClick={handlePreviousButton}>
+                    previous
+                  </button>
+                )}
+              </>
+            )}
+            {page < 4 ? (
+              <button className="button" onClick={handleNextButton}>
+                next
+              </button>
+            ) : (
+              <>
+                {!loading && (
+                  <button type="submit" className="button">
+                    submit
+                  </button>
+                )}
+                <PacmanLoader color="#7D142E" loading={loading} size={20} />
+              </>
+            )}
+          </div>
+        </form>
       )}
-      {page === 2 && (
-        <PageTwo
-          selectedCourse1={selectedCourse1}
-          selectedCourse2={selectedCourse2}
-          onSetCourse1={setSelectedCourse1}
-          onSetCourse2={setSelectedCourse2}
-        />
-      )}
-      {page === 3 && selectedCourse1 === "Montage" && <Montage />}
-      {page === 3 && selectedCourse1 === "Python" && (
-        <Python
-          q4={q4}
-          q5={q5}
-          q6={q6}
-          q7={q7}
-          onSetQ4={setQ4}
-          onSetQ5={setQ5}
-          onSetQ6={setQ6}
-          onSetQ7={setQ7}
-        />
-      )}
-      {page === 3 && selectedCourse1 === "Machine-learning" && (
-        <MachineLearning
-          q4={q4}
-          q5={q5}
-          q6={q6}
-          onSetQ4={setQ4}
-          onSetQ5={setQ5}
-          onSetQ6={setQ6}
-        />
-      )}
-      {page === 3 && selectedCourse1 === "Graphic-desgin" && (
-        <GraphicDesign
-          q4={q4}
-          q5={q5}
-          q6={q6}
-          q7={q7}
-          q8={q8}
-          onSetQ4={setQ4}
-          onSetQ5={setQ5}
-          onSetQ6={setQ6}
-          onSetQ7={setQ7}
-          onSetQ8={setQ8}
-        />
-      )}
-      {page === 3 && selectedCourse1 === "Front-end" && (
-        <FrontEnd
-          q4={q4}
-          q5={q5}
-          q6={q6}
-          onSetQ4={setQ4}
-          onSetQ5={setQ5}
-          onSetQ6={setQ6}
-        />
-      )}
-      {page === 4 && (
-        <LastPage
-          q1={q1}
-          onSetQ1={setQ1}
-          q2={q2}
-          onSetQ2={setQ2}
-          q3={q3}
-          onSetQ3={setQ3}
-        />
-      )}
-      <div className="form__button">
-        {page > 1 && (
-          <button className="button" onClick={handlePreviousButton}>
-            previous
-          </button>
-        )}
-        {page < 4 ? (
-          <button className="button" onClick={handleNextButton}>
-            next
-          </button>
-        ) : (
-          <>
-          {!loading &&(
-            <button type="submit" className="button">
-            submit
-          </button>
-)}
-              <PacmanLoader color="#7D142E" loading={loading} size={20}/>
-          
-          </>
-        )}
-      </div>
-    </form>
-      )
-    }
-        </>
-
+    </>
   );
 }
 export default WorkShopForm;

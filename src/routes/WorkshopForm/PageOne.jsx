@@ -67,12 +67,20 @@ export function PageOne({
         />
       </div>
       <div className="form__group ">
-        <input
+        <select
           value={graduation}
           onChange={(e) => onSetGraduation(e.target.value)}
-          type="text"
+          className="form__select"
           placeholder="Graduation Year"
-        />
+          defaultValue={'2024'}
+        >
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+        </select>
       </div>
     </>
   );
