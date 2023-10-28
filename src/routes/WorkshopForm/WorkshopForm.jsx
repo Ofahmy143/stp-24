@@ -1,5 +1,7 @@
 import "./WorkshoStyle/main.scss";
 // import formImg from "../../assets/workshop-form/scroll.svg";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Logo } from "../../components/workshop-form/Logo";
 import { Formtext } from "../../components/workshop-form/Formtext";
 import { useState } from "react";
@@ -13,6 +15,7 @@ import { Montage } from "./Montage";
 import { LastPage } from "./LastPage";
 import { Ajax } from "./helper";
 import { PacmanLoader } from "react-spinners";
+
 function WorkShopForm() {
   return (
     <div className="form-page">
@@ -29,6 +32,12 @@ function Form() {
       <FormDetails />
     </div>
   );
+}
+
+function showErrorToastMessage(message){
+  toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+  });
 }
 function FormDetails() {
   const [page, setPage] = useState(1);
@@ -53,6 +62,7 @@ function FormDetails() {
   const [loading, setLoading] = useState(false);
   const handleForm = async function (e) {
     e.preventDefault();
+
     const workshopParticipant = {
       fullname: fullName,
       national_id: nationalId,
@@ -72,6 +82,7 @@ function FormDetails() {
       q7: q7 || ".",
       q8: q8 || ".",
     };
+
     try {
       if(q1.trim() === "" || q2.trim() === "" | q3.trim() === "" ){
         alert("Fill All page questions")
@@ -91,7 +102,7 @@ function FormDetails() {
       if(errorMsg.length > 155){
         errorMsg = errorMsg.substring(0, 155)
       }
-      alert(
+      showErrorToastMessage(
         `Error Occured: ${error.response.data.message ||
           "Something went wrong"}`
       );
@@ -111,26 +122,31 @@ function FormDetails() {
         graduation.trim() === ""))
         || (page === 3 && (q4.trim() === "" || q5.trim() === "" || q6.trim() === ""))
     ) {
-      alert("fill all page inputs First");
+      showErrorToastMessage("fill all page inputs First");
       return;
     }
     // if( page === 2 && (selectedCourse1===selectedCourse2) {
     if (page === 2 && selectedCourse1 === selectedCourse2) {
-      alert("preferences must be different");
+      showErrorToastMessage("preferences must be different");
       return;
     }
     setPage((p) => p + 1);
   };
+
   const handlePreviousButton = function (e) {
     e.preventDefault();
     if (page < 2) return;
     else setPage((p) => p - 1);
   };
+
+  
   return (
     <>
-      {success && <h1 className="success-msg">Thank You For Submitting</h1>}
+    <ToastContainer />
+      {success && <span className="success-msg">Thank You For Submitting</span>}
       {!success && (
         <form className="form__details" onSubmit={handleForm}>
+          
           {page === 1 && (
             <PageOne
               fullName={fullName}
