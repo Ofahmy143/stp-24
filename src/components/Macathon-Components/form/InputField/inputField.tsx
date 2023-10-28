@@ -1,5 +1,5 @@
 import "./InputField.css";
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 
 const GenericInput = ({
   question,

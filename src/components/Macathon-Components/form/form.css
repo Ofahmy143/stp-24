@@ -22,7 +22,7 @@ body {
   background-image: url("../../../assets/Macathon-form/formStructure.png");
   background-size: 100% 95%;
   background-repeat: no-repeat;
-  min-height: 750px;
+  height: 750px;
   padding: 90px 50px;
   position: relative;
   overflow: hidden;
@@ -30,8 +30,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  min-width: 400px;
   width: 600px;
+  position: absolute;
+  left: 33%;
+  top: 0;
 }
 
 .formQuestions {
@@ -64,25 +66,207 @@ body {
 }
 .Container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
+  min-width: 400px;
 }
 .navText {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 20px;
+  width: 10%;
+  padding: 20px;
+  margin-left: 20px;
 }
 
 .navLine {
   color: #fbf6dd;
-  font-size: 50px;
-  width: 180px;
+  font-size: 2vw;
   text-align: left;
+  width: 100%;
+}
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 200px;
 }
 
 .navImage {
   background-image: url("../../../assets/Macathon-form/stp_logo.png");
-  width: 180px;
+  width: 150px;
   background-repeat: no-repeat;
+}
+.transparent {
+  color: transparent;
+}
+
+@media screen and (max-width: 1700px) {
+  .mainForm {
+    width: 550px;
+    font-size: 20px;
+    height: 720px;
+  }
+  .navLine {
+    font-size: 43px;
+    width: 160px;
+  }
+  .navImage {
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .mainForm {
+    width: 580px;
+    font-size: 18px;
+    height: 720px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .mainForm {
+    width: 570px;
+    font-size: 18px;
+    height: 710px;
+    left: 30%;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .mainForm {
+    width: 560px;
+    font-size: 18px;
+    height: 700px;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .mainForm {
+    width: 450px;
+    font-size: 16px;
+    height: 640px;
+    left: 33%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .mainForm {
+    width: 440px;
+    height: 630px;
+    left: 29%;
+  }
+  .nav {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .mainForm {
+    width: 430px;
+    height: 620px;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .mainForm {
+    width: 420px;
+    height: 610px;
+    left: 28%;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .mainForm {
+    width: 410px;
+    margin-top: 100px;
+    height: 600px;
+    left: 27.5%;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .mainForm {
+    width: 400px;
+    height: 580px;
+    left: 25%;
+    margin-top: 130px;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .mainForm {
+    width: 400px;
+    font-size: 16px;
+    height: 570px;
+    left: 22%;
+  }
+  .navImage {
+    height: 200px;
+  }
+  .movingButtons {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .mainForm {
+    width: 400px;
+    height: 570px;
+    left: 20%;
+  }
+
+  .movingButtons {
+    margin-bottom: 0px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .mainForm {
+    width: 350px;
+    left: 20%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .mainForm {
+    width: 400px;
+    left: 15%;
+    margin-top: 150px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .mainForm {
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mainForm {
+    height: 590px;
+    left: 7%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .mainForm {
+    width: 350px;
+    left: 9%;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .mainForm {
+    width: 350px;
+    left: 7%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .mainForm {
+    width: 350px;
+    left: 5%;
+  }
 }

@@ -38,3 +38,9 @@
   pointer-events: none; /* Ensure the arrow does not interfere with interaction */
   color: red;
 }
+
+@media screen and (max-width: 1500px) {
+  .selectTitle{
+    font-size:40px;
+  }
+}

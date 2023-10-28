@@ -30,6 +30,8 @@
   color: #fff;
   font-size: 1em;
   appearance: none;
+
+  z-index: 3;
 }
 
 .inputBox span {
@@ -37,6 +39,7 @@
   left: -5%;
   top: 20%;
   padding: 10px 10px;
+  padding-bottom: 0px;
   margin-left: 5px;
   pointer-events: none;
   font-size: 2em;
@@ -65,4 +68,37 @@
   -ms-transform: translateY(-15px) translateX(35px);
   -o-transform: translateY(-15px) translateX(35px);
   background: #0c4165;
+}
+
+@media screen and (max-width: 1700px) {
+  .InputFieldMacathon {
+    margin: 12px 5px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .InputFieldMacathon {
+    margin: 11px 5px;
+  }
+  .inputBox input:valid ~ span,
+  .inputBox input:focus ~ span,
+  .has-value span {
+    width: 35% !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .InputFieldMacathon {
+    margin: 9px 5px;
+  }
+
+  .inputBox input:valid ~ span,
+  .inputBox input:focus ~ span,
+  .has-value span {
+    width: 45% !important;
+  }
+
+  .inputBox span {
+    font-size: 26px !important;
+  }
 }
