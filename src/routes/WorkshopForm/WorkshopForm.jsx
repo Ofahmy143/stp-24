@@ -1,5 +1,5 @@
 import "./WorkshoStyle/main.scss";
-import formImg from "../../assets/workshop-form/scroll.svg";
+// import formImg from "../../assets/workshop-form/scroll.svg";
 import { Logo } from "../../components/workshop-form/Logo";
 import { Formtext } from "../../components/workshop-form/Formtext";
 import { useState } from "react";
@@ -25,7 +25,7 @@ function WorkShopForm() {
 function Form() {
   return (
     <div className="form">
-      <img src={formImg} alt="form" className="form__img" />
+      {/* <img src={formImg} alt="form" className="form__img" /> */}
       <FormDetails />
     </div>
   );
