@@ -10,20 +10,15 @@ type formThreeProps = {
 };
 function ThirdFormPage({ data, updateFields }: formThreeProps) {
   return (
-    <>
-      {data.teamRole !== "" ? (
-        <FormTitle title={data.teamRole}></FormTitle>
-      ) : (
-        <div></div>
-      )}
-      <div className="QuesContainer">
-        <div className="formQuestions">
-          {questions["ThirdPageQuestions"].pageQuestions.map(
-            (question: PageQuestion) => getInputField({ question, data,updateFields })
-          )}
-        </div>
+    
+    <div className="QuesContainer">
+      <div className="formQuestions">
+        {questions["ThirdPageQuestions"].pageQuestions.map(
+          (question: PageQuestion) =>
+            getInputField({ question, data, updateFields })
+        )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import "./InputField.css";
 import React, { useEffect } from "react";
-import { addClassHasValue } from "./inputField";
+
 const GenericInput = ({
   question,
   name,
@@ -15,7 +15,17 @@ const GenericInput = ({
   onChange: () => void;
 }) => {
   useEffect(() => {
-    addClassHasValue();
+    const emailInput: HTMLInputElement | null = document.getElementById(
+      "email"
+    ) as HTMLInputElement | null;
+
+    emailInput?.addEventListener("input", function () {
+      if (emailInput?.value.trim() !== "") {
+        emailInput?.classList.add("has-value");
+      } else {
+        emailInput.classList.remove("has-value");
+      }
+    });
   }, []); // Empty dependency array ensures this effect runs once after the initial render
 
   return (

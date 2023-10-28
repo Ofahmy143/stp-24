@@ -5,20 +5,26 @@ import SecondFormPage from "./formSteps/SecondFormPage";
 import ThirdFormPage from "./formSteps/ThirdFormPage";
 import { MacathonFormData } from "../../../types/macathon-form-data";
 import { useState } from "react";
+import FirstFormPage from "./formSteps/FirstFormPage";
 const InitialData: MacathonFormData = {
-  fullName: "",
+  fullname: "",
   email: "",
-  teamName: "",
-  teamRole: "Member",
+  team_name: "",
+  team_role: "Team Member",
   faculty: "",
-  gradYear: 0,
+  graduation_year: "",
   cv: "",
   university: "",
+  national_id: "",
+  phone_number: "",
+  q1: "",
+  q2: "",
+  team_number: "3",
 };
 
 function MacathonForm() {
   const [data, setData] = useState(InitialData);
-  
+
   function updateFields(fields: Partial<MacathonFormData>) {
     setData((previousData) => {
       return { ...previousData, ...fields };
@@ -27,6 +33,7 @@ function MacathonForm() {
 
   const { currentStepIdx, steps, goNext, goBack, isFirstStep, isLastStep } =
     ApplyMultiStepForm([
+      <FirstFormPage data={data} updateFields={updateFields}></FirstFormPage>,
       <SecondFormPage data={data} updateFields={updateFields}></SecondFormPage>,
       <ThirdFormPage data={data} updateFields={updateFields}></ThirdFormPage>,
     ]);
@@ -38,6 +45,11 @@ function MacathonForm() {
 
   return (
     <div className="Container">
+      <div className="navText">
+        <div className="navLine">#STP-24</div>
+        <div className="navLine">#Mind-Travel</div>
+      </div>
+
       <form onSubmit={onSubmitHandler}>
         <div className="mainForm">
           {steps[currentStepIdx]}
@@ -59,6 +71,9 @@ function MacathonForm() {
           </div>
         </div>
       </form>
+
+      <div className="navImage">
+      </div>
     </div>
   );
 }

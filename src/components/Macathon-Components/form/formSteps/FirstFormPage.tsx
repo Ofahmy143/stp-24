@@ -10,9 +10,10 @@ function FirstFormPage({ data, updateFields }: formTwoProps) {
   return (
     <div className="QuesContainer">
       <div className="formQuestions">
-        {questions["SecondPageQuestions"].pageQuestions.map(
-          (question: PageQuestion) =>
-            getInputField({ question, data, updateFields })
+        {questions["FirstPageQuestions"].pageQuestions.map(
+          (question: PageQuestion) => {
+            return getInputField({ question, data, updateFields });
+          }
         )}
       </div>
     </div>

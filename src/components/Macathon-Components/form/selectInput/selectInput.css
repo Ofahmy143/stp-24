@@ -1,0 +1,40 @@
+.selectBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 110%;
+  margin-bottom: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectTitle {
+  font-size: 47px;
+  letter-spacing: 0.07rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.selectBox select {
+  width: 85%;
+  padding: 10px;
+  border: 1px solid;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  background: #0c4165;
+  color: white;
+  
+}
+
+.selectBox select::after {
+  content: "A"; /* Unicode character for down arrow */
+  background: green;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  pointer-events: none; /* Ensure the arrow does not interfere with interaction */
+  color: red;
+}
