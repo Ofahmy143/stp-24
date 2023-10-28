@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  @media only screen and (max-width: $tablet-screen) {
+    font-size: 50%;
+  }
+
+  @media only screen and (max-width: $mobile-screen) {
+    font-size: 37.5%;
+  }
+}
