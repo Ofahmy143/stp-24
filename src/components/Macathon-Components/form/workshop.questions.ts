@@ -67,7 +67,7 @@ export const questions: QuestionsObject = {
         type: QuestionTypeEnum.NUMBER,
         name: "graduation_year",
         regex: "",
-      }
+      },
     ],
   },
   SecondPageQuestions: {
@@ -116,124 +116,145 @@ export const questions: QuestionsObject = {
 
 export const workshopQuestions = {
   [WorkshopEnum.PYTHON]: [
-    {
-      question:
-        "Are You Familiar with any programming language? ",
-      type: QuestionTypeEnum.ESSAY,
-      name: "q4",
-      regex: "",
-    },
-    {
-      question: "For i (1,2,3,4,5) \n \t print(i%2) \n outputs?",
-      type: QuestionTypeEnum.ESSAY,
-      name: "q5",
-      regex: "",
-    },
-    {
-      question: "Describe your familiarity with OOP",
-      type: QuestionTypeEnum.ESSAY,
-      name: "q6",
-      regex: "",
-    },
+    [
+      {
+        question: "Familiarity with any programming language?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q4",
+        regex: "",
+      },
+      {
+        question: "For i (1,2,3,4,5) \n \t print(i%2) \n outputs?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q5",
+        regex: "",
+      },
+    ],
+    [
+      {
+        question: "Describe your familiarity with OOP",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q6",
+        regex: "",
+      },
+    ],
   ],
   [WorkshopEnum.FRONTEND]: [
-    {
-      question:
-        "Are You Familiar with any programming language?",
-      type: QuestionTypeEnum.ESSAY,
-      name: "q4",
-      regex: "",
-    },
-    {
-      question: "Are You Familiar with HTML, CSS, JS? ",
-      type: QuestionTypeEnum.ESSAY,
-      name: "q5",
-      regex: "",
-    },
-    {
-      question: "Do you know what a Div is?",
-      type: QuestionTypeEnum.ESSAY,
-      name: "q6",
-      regex: "",
-    },
+    [
+      {
+        question: "Familiarity with any programming language?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q4",
+        regex: "",
+      },
+      {
+        question: "Are You Familiar with HTML, CSS, JS? ",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q5",
+        regex: "",
+      },
+    ],
+    [
+      {
+        question: "Do you know what a Div is?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q6",
+        regex: "",
+      },
+    ],
   ],
   [WorkshopEnum.GD]: [
-    {
-      question: "Do you have knowledge in graphic design?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q4",
-      regex: "",
-    },
-    {
-      question: "Do you have knowledge in Adobe Photoshop?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q5",
-      regex: "",
-    },
-    {
-      question: "Do you have knowledge in Adobe Illustrator?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q6",
-      regex: "",
-    },
-    {
-      question: "Are you familiar with Ui design?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q7",
-      regex: "",
-    },
-    {
-      question: "Why do you want to graphic design?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q8",
-      regex: "",
-    },
+    [
+      {
+        question: "Do you have Experience in graphic design?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q4",
+        regex: "",
+      },
+      {
+        question: "Do you have knowledge in Adobe Photoshop?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q5",
+        regex: "",
+      },
+    ],
+    [
+      {
+        question: "Experience in Adobe Illustrator?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q6",
+        regex: "",
+      },
+      {
+        question: "Are you familiar with Ui design?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q7",
+        regex: "",
+      },
+    ],
+    [
+      {
+        question: "Why do you want to graphic design?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q8",
+        regex: "",
+      },
+    ],
   ],
   [WorkshopEnum.MONTAGE]: [
-    {
-      question: "Do you have previous knowledge in video editing?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q4",
-      regex: "",
-    },
-    {
-      question: "What related programs have you used?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q5",
-      regex: "",
-    },
-    {
-      question: "Do you have previous knowledge in Adobe Premiere?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q6",
-      regex: "",
-    },
-    {
-      question: "Why do you want to learn montage?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q7",
-      regex: "",
-    },
+    [
+      {
+        question: "Do you have previous knowledge in montage?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q4",
+        regex: "",
+      },
+      {
+        question: "What related programs have you used?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q5",
+        regex: "",
+      },
+    ],
+    [
+      {
+        question: "Do you have Experience in Adobe Pr?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q6",
+        regex: "",
+      },
+      {
+        question: "Why do you want to learn montage?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q7",
+        regex: "",
+      },
+    ],
   ],
   [WorkshopEnum.MACHINE_LEARNING]: [
-    {
-      question: "Are you familiar with Ml or DL algorithms?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q4",
-      regex: "",
-    },
-    {
-      question: "Do you have previous knowledge in Python?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q4",
-      regex: "",
-    },
-    {
-      question:
-        "Are you willing to take a test as Machine Learning has prerequesite of Python?",
-      type: QuestionTypeEnum.NORMAL_TEXT,
-      name: "q5",
-      regex: "",
-    },
+    [
+      {
+        question: "Are you familiar with Ml or DL algorithms?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q4",
+        regex: "",
+      },
+      {
+        question: "Do you have previous knowledge in Python?",
+        type: QuestionTypeEnum.ESSAY,
+        name: "q4",
+        regex: "",
+      },
+    ],
+    [
+      {
+        question:
+          "Are you willing to take a test as Machine Learning has prerequesite of Python?",
+        type: QuestionTypeEnum.SELECT,
+        choices: ["Yes", "No"],
+        name: "q5",
+        regex: "",
+      },
+    ],
   ],
 };

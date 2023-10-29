@@ -5,7 +5,7 @@ import { ApplyMultiStepForm } from "./formSteps/multistepForm";
 // import SecondFormPage from "./formSteps/SecondFormPage";
 // import ThirdFormPage from "./formSteps/ThirdFormPage";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
 import { PageQuestion } from "./questions";
@@ -24,22 +24,6 @@ function WorkshopForm() {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
-  // const { currentStepIdx, steps, goNext, goBack, isFirstStep, isLastStep } =
-  //   ApplyMultiStepForm([
-  //     <FirstFormPage
-  //       data={data as DataType}
-  //       updateFields={updateFields}
-  //     ></FirstFormPage>,
-  //     <SecondFormPage
-  //       data={data as DataType}
-  //       updateFields={updateFields}
-  //     ></SecondFormPage>,
-  //     <ThirdFormPage
-  //       data={data as DataType}
-  //       updateFields={updateFields}
-  //     ></ThirdFormPage>,
-  //   ]);
-
   const { currentStepIdx, steps, goNext, goBack, isFirstStep, isLastStep } =
     ApplyMultiStepForm([
       <FormPage
@@ -52,13 +36,15 @@ function WorkshopForm() {
         questions={questions.SecondPageQuestions.pageQuestions}
         updateFields={updateForm}
       />,
-      <FormPage
-        formData={Form}
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        questions={workshopQuestions[Form.workshop] as PageQuestion[]}
-        updateFields={updateForm}
-      />,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      ...workshopQuestions[Form.workshop].map((questions) => (
+        <FormPage
+          formData={Form}
+          questions={questions}
+          updateFields={updateForm}
+        />
+      )),
       <FormPage
         formData={Form}
         questions={questions.ThirdPageQuestions.pageQuestions}
@@ -104,51 +90,72 @@ function WorkshopForm() {
   };
 
   return (
-    <div className="Container">
-      <div className="nav">
-        <div className="navText">
-          <div className="navLine">#STP-24</div>
-          <div className="navLine">#Mind-Travel</div>
-        </div>
-
-        <div className="navImage">
-          <div className="transparent navLine">#STP-24</div>
-          <div className="transparent navLine">#Mind-Travel</div>
-        </div>
-      </div>
-
-      <form onSubmit={onSubmitHandler}>
-        {success && (
-          <div className="success">You have successfully registered</div>
-        )}
-        {!success && (
-          <div className="mainForm">
-            {steps[currentStepIdx]}
-            <div className="movingButtons">
-              {!isFirstStep ? (
-                <MovingButton onClick={goBack} title="Previous"></MovingButton>
-              ) : (
-                <div></div>
-              )}
-              {!isLastStep ? (
-                <button className="movingButton" type="submit">
-                  Next
-                </button>
-              ) : (
-                <>
-                  <PacmanLoader color="#36d7b7" loading={isLoading} size={20} />
-                  {!isLoading && (
-                    <button className="movingButton" type="submit">
-                      Submit
-                    </button>
-                  )}
-                </>
-              )}
-            </div>
+    <>
+      <div className="Container">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+        <div className="nav">
+          <div className="navText">
+            <div className="navLine">#STP-24</div>
+            <div className="navLine">#Mind-Travel</div>
           </div>
-        )}
-      </form>
-    </div>
+
+          <div className="navImage">
+            <div className="transparent navLine">#STP-24</div>
+            <div className="transparent navLine">#Mind-Travel</div>
+          </div>
+        </div>
+
+        <form onSubmit={onSubmitHandler}>
+          {success && (
+            <div className="success">You have successfully registered</div>
+          )}
+          {!success && (
+            <div className="mainForm">
+              {steps[currentStepIdx]}
+              <div className="movingButtons">
+                {!isFirstStep ? (
+                  <MovingButton
+                    onClick={goBack}
+                    title="Previous"
+                  ></MovingButton>
+                ) : (
+                  <div></div>
+                )}
+                {!isLastStep ? (
+                  <button className="movingButton" type="submit">
+                    Next
+                  </button>
+                ) : (
+                  <>
+                    <PacmanLoader
+                      color="#36d7b7"
+                      loading={isLoading}
+                      size={20}
+                    />
+                    {!isLoading && (
+                      <button className="movingButton" type="submit">
+                        Submit
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
+          )}
+        </form>
+      </div>
+    </>
   );
 }
 

@@ -28,7 +28,7 @@ export const questions: QuestionsObject = {
   FirstPageQuestions: {
     pageQuestions: [
       {
-        question: "Are you a team leader or registering as an individual?",
+        question: "Team Role?",
         type: QuestionTypeEnum.SELECT,
         name: "team_role",
         choices: ["Team Leader", "Team Member"],
@@ -36,7 +36,7 @@ export const questions: QuestionsObject = {
       },
       {
         question:
-          "If you are a team leader, what is the number of your team members\n (Exclude yourself)",
+          "the number of your team members\n (Exclude yourself)",
         type: QuestionTypeEnum.SELECT,
         name: "team_number",
         choices: ["1", "2", "3"],
@@ -70,6 +70,10 @@ export const questions: QuestionsObject = {
         name: "phone_number",
         regex: "",
       },
+    ],
+  },
+  ThirdPageQuestions: {
+    pageQuestions :[ 
       {
         question: "University",
         type: QuestionTypeEnum.NORMAL_TEXT,
@@ -94,9 +98,9 @@ export const questions: QuestionsObject = {
         name: "cv_url",
         regex: "",
       },
-    ],
+    ]
   },
-  ThirdPageQuestions: {
+  FourthPageQuestions: {
     pageQuestions: [
       {
         question: "How Did you know about the competition?",

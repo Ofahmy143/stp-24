@@ -5,13 +5,12 @@ import { ApplyMultiStepForm } from "./formSteps/multistepForm";
 // import SecondFormPage from "./formSteps/SecondFormPage";
 // import ThirdFormPage from "./formSteps/ThirdFormPage";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
 import { questions } from "./questions";
 import FormPage from "./formSteps/FormPage";
 import { useMacathonFormStore } from "../../../zustand/form/macathon.formStore";
-
 
 function MacathonForm() {
   const { Form, updateForm } = useMacathonFormStore();
@@ -24,22 +23,6 @@ function MacathonForm() {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
-  // const { currentStepIdx, steps, goNext, goBack, isFirstStep, isLastStep } =
-  //   ApplyMultiStepForm([
-  //     <FirstFormPage
-  //       data={data as DataType}
-  //       updateFields={updateFields}
-  //     ></FirstFormPage>,
-  //     <SecondFormPage
-  //       data={data as DataType}
-  //       updateFields={updateFields}
-  //     ></SecondFormPage>,
-  //     <ThirdFormPage
-  //       data={data as DataType}
-  //       updateFields={updateFields}
-  //     ></ThirdFormPage>,
-  //   ]);
-
   const { currentStepIdx, steps, goNext, goBack, isFirstStep, isLastStep } =
     ApplyMultiStepForm([
       <FormPage
@@ -55,6 +38,11 @@ function MacathonForm() {
       <FormPage
         formData={Form}
         questions={questions.ThirdPageQuestions.pageQuestions}
+        updateFields={updateForm}
+      />,
+      <FormPage
+        formData={Form}
+        questions={questions.FourthPageQuestions.pageQuestions}
         updateFields={updateForm}
       />,
     ]);
@@ -82,18 +70,18 @@ function MacathonForm() {
         setIsLoading(false);
         return;
       }
-      
-      const { team_role, team_number, ...FormWithoutRole} = Form 
-      if(parseInt(team_number) > 3 || parseInt(team_number) < 6){
+
+      const { team_role, team_number, ...FormWithoutRole } = Form;
+      if (parseInt(team_number) > 3 || parseInt(team_number) < 6) {
         // showErrorToastMessage("Invalid team number");
         // console.log("Iam Here");
         // setIsLoading(false);
         // return;
       }
       const API_URL = `https://stp-24.onrender.com/macathon-registeration/add-${team_role
-      .toLowerCase()
-      .split(" ")
-      .join("-")}`;
+        .toLowerCase()
+        .split(" ")
+        .join("-")}`;
       try {
         const response = await axios.post(API_URL, FormWithoutRole);
         console.warn({ data: response });
@@ -109,6 +97,18 @@ function MacathonForm() {
 
   return (
     <div className="Container">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div className="nav">
         <div className="navText">
           <div className="navLine">#STP-24</div>
@@ -127,34 +127,28 @@ function MacathonForm() {
         )}
         {!success && (
           <div className="mainForm">
-
-                {steps[currentStepIdx]}
-                <div className="movingButtons">
-                  {!isFirstStep ? (
-                    <MovingButton
-                      onClick={goBack}
-                      title="Previous"
-                    ></MovingButton>
-                  ) : (
-                    <div></div>
-                  )}
-                  {!isLastStep ? (
-                    <button className="movingButton" type="submit">
-                      Next
-                    </button>
-                  ) : (
-                    <>
-                    <PacmanLoader color="#36d7b7" loading={isLoading} size={30} />
-                    {!isLoading && (
-
+            {steps[currentStepIdx]}
+            <div className="movingButtons">
+              {!isFirstStep ? (
+                <MovingButton onClick={goBack} title="Previous"></MovingButton>
+              ) : (
+                <div></div>
+              )}
+              {!isLastStep ? (
+                <button className="movingButton" type="submit">
+                  Next
+                </button>
+              ) : (
+                <>
+                  <PacmanLoader color="#36d7b7" loading={isLoading} size={30} />
+                  {!isLoading && (
                     <button className="movingButton" type="submit">
                       Submit
                     </button>
-                    )}
-                    </>
                   )}
-                </div>
-
+                </>
+              )}
+            </div>
           </div>
         )}
       </form>
