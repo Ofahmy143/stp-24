@@ -116,8 +116,8 @@ function MacathonForm() {
         </div>
 
         <div className="navImage">
-          <div className="transparent navLine">#STP-24</div>
-          <div className="transparent navLine">#Mind-Travel</div>
+          {/* <div className="transparent navLine">#STP-24</div> */}
+          {/* <div className="transparent navLine">#Mind-Travel</div> */}
         </div>
       </div>
 

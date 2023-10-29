@@ -58,7 +58,8 @@
 .inputBox input:valid ~ span,
 .inputBox input:focus ~ span,
 .has-value span {
-  width: 30%;
+  width: 40%;
+  /* border: 1px solid wheat; */
   color: #f1e9c9;
   font-size: 1.5rem;
   transform: translateY(-15px) translateX(35px);
@@ -95,7 +96,7 @@
   .inputBox input:valid ~ span,
   .inputBox input:focus ~ span,
   .has-value span {
-    width: 45% !important;
+    width: 70% !important;
   }
 
   .inputBox span {
