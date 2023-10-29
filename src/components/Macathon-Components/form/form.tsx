@@ -53,23 +53,23 @@ function MacathonForm() {
     event.preventDefault();
     goNext();
     if (isLastStep) {
-      console.warn({ data2: Form });
+      // console.warn({ data2: Form });
       setIsLoading(true);
-      const phonePattern = new RegExp("^(0)[0-9]{10}$");
-      if (!phonePattern.test(Form.phone_number)) {
-        showErrorToastMessage("Invalid phone number");
-        console.log("Iam Here");
-        setIsLoading(false);
-        return;
-      }
+      // const phonePattern = new RegExp("^(0)[0-9]{10}$");
+      // if (!phonePattern.test(Form.phone_number)) {
+      //   showErrorToastMessage("Invalid phone number");
+      //   console.log("Iam Here");
+      //   setIsLoading(false);
+      //   return;
+      // }
 
-      const emailPattern = new RegExp("^\\S+@\\S+\\.\\S+$");
-      if (!emailPattern.test(Form.email)) {
-        showErrorToastMessage("Invalid email address");
-        console.log("Iam Here");
-        setIsLoading(false);
-        return;
-      }
+      // const emailPattern = new RegExp("^\\S+@\\S+\\.\\S+$");
+      // if (!emailPattern.test(Form.email)) {
+      //   showErrorToastMessage("Invalid email address");
+      //   console.log("Iam Here");
+      //   setIsLoading(false);
+      //   return;
+      // }
 
       const { team_role, team_number, ...FormWithoutRole } = Form;
       if (parseInt(team_number) > 3 || parseInt(team_number) < 6) {

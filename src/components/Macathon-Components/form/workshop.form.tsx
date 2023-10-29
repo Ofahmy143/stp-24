@@ -59,20 +59,20 @@ function WorkshopForm() {
     if (isLastStep) {
       console.warn({ data2: Form });
       setIsLoading(true);
-      const phonePattern = new RegExp("^0[0-9]{10}$");
-      if (!phonePattern.test(Form.phone_number)) {
-        showErrorToastMessage("Invalid phone number");
-        console.log("Iam Here phone");
-        setIsLoading(false);
-        return;
-      }
+      // const phonePattern = new RegExp("^0[0-9]{10}$");
+      // if (!phonePattern.test(Form.phone_number)) {
+      //   showErrorToastMessage("Invalid phone number");
+      //   console.log("Iam Here phone");
+      //   setIsLoading(false);
+      //   return;
+      // }
 
-      const emailPattern = new RegExp("^\\S+@\\S+\\.\\S+$");
-      if (!emailPattern.test(Form.email)) {
-        showErrorToastMessage("Invalid email address");
-        setIsLoading(false);
-        return;
-      }
+      // const emailPattern = new RegExp("^\\S+@\\S+\\.\\S+$");
+      // if (!emailPattern.test(Form.email)) {
+      //   showErrorToastMessage("Invalid email address");
+      //   setIsLoading(false);
+      //   return;
+      // }
 
       const API_URL = `https://stp-24.onrender.com/workshop-registeration/add-participant`;
       try {
