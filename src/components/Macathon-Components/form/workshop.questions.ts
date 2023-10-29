@@ -242,7 +242,7 @@ export const workshopQuestions = {
       {
         question: "Do you have previous knowledge in Python?",
         type: QuestionTypeEnum.ESSAY,
-        name: "q4",
+        name: "q5",
         regex: "",
       },
     ],
@@ -252,7 +252,7 @@ export const workshopQuestions = {
           "Are you willing to take a test as Machine Learning has prerequesite of Python?",
         type: QuestionTypeEnum.SELECT,
         choices: ["Yes", "No"],
-        name: "q5",
+        name: "q6",
         regex: "",
       },
     ],
