@@ -8,7 +8,6 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
-import { PageQuestion } from "./questions";
 import FormPage from "./formSteps/FormPage";
 import { useWorkshopFormStore } from "../../../zustand/form/workshop.formStore";
 import { workshopQuestions, questions } from "./workshop.questions";
