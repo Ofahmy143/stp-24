@@ -1,3 +1,4 @@
+import { DataType } from "../formSteps/setInputValue";
 import "./textArea.css"
 const TextAreaInput = ({
   question,
@@ -7,17 +8,20 @@ const TextAreaInput = ({
 }: {
   question: string;
   name: string;
-  onChange: () => void;
-  choices: string[] | undefined;
-  value: string | number;
+  onChange: (update: Partial<DataType>) => void;
+  value: string | number| undefined;
 }) => {
+  function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
+    const { value } = e.target;
+    onChange({ [name]: value });
+}
   return (
     <div className="textAreaBox">
       <textarea
         required
         name={name}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         className="TextAreaMacathon"
       />
       <span>{question}</span>

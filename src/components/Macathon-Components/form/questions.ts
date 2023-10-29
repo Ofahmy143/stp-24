@@ -30,7 +30,7 @@ export const questions: QuestionsObject = {
       {
         question: "Are you a team leader or registering as an individual?",
         type: QuestionTypeEnum.SELECT,
-        name: "teamRole",
+        name: "team_role",
         choices: ["Team Leader", "Team Member"],
         regex: "",
       },
@@ -38,7 +38,7 @@ export const questions: QuestionsObject = {
         question:
           "If you are a team leader, what is the number of your team members\n (Exclude yourself)",
         type: QuestionTypeEnum.SELECT,
-        name: "teamNumber",
+        name: "team_number",
         choices: ["1", "2", "3"],
         regex: "",
       },
@@ -49,13 +49,13 @@ export const questions: QuestionsObject = {
       {
         question: "full name",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "fullName",
+        name: "fullname",
         regex: "",
       },
       {
         question: "Team Name",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "teamName",
+        name: "team_name",
         regex: "",
       },
       {
@@ -67,7 +67,7 @@ export const questions: QuestionsObject = {
       {
         question: "Phone Number",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "phoneNumber",
+        name: "phone_number",
         regex: "",
       },
       {
@@ -85,13 +85,13 @@ export const questions: QuestionsObject = {
       {
         question: "Graduation Year",
         type: QuestionTypeEnum.NUMBER,
-        name: "gradYear",
+        name: "graduation_year",
         regex: "",
       },
       {
         question: "CV (Drive Link)",
         type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "cv",
+        name: "cv_url",
         regex: "",
       },
     ],

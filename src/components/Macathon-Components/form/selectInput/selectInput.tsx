@@ -1,3 +1,4 @@
+import { DataType } from "../formSteps/setInputValue";
 import "./selectInput.css";
 const SelectInput = ({
   question,
@@ -8,17 +9,21 @@ const SelectInput = ({
 }: {
   question: string;
   name: string;
-  onChange: () => void;
+  onChange: (update: Partial<DataType>) => void;
   choices: string[] | undefined;
-  value: string | number;
+  value: string | number| undefined;
 }) => {
+  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    const { value } = e.target;
+    onChange({ [name]: value });
+}
   return (
     <div className="selectBox">
       <h2 className="selectTitle">{question}</h2>
       <select
         required
         name={name}
-        onChange={onChange}
+        onChange={handleChange}
         className="SelectMacathonField"
       >
         {choices !== undefined ? (

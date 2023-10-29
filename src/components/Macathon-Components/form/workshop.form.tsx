@@ -8,13 +8,13 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { PacmanLoader } from "react-spinners";
-import { questions } from "./questions";
+import { PageQuestion } from "./questions";
 import FormPage from "./formSteps/FormPage";
-import { useMacathonFormStore } from "../../../zustand/form/macathon.formStore";
+import { useWorkshopFormStore } from "../../../zustand/form/workshop.formStore";
+import { workshopQuestions, questions } from "./workshop.questions";
 
-
-function MacathonForm() {
-  const { Form, updateForm } = useMacathonFormStore();
+function WorkshopForm() {
+  const { Form, updateForm } = useWorkshopFormStore();
 
   const [success, setSuccess] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -54,6 +54,13 @@ function MacathonForm() {
       />,
       <FormPage
         formData={Form}
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        questions={workshopQuestions[Form.workshop] as PageQuestion[]}
+        updateFields={updateForm}
+      />,
+      <FormPage
+        formData={Form}
         questions={questions.ThirdPageQuestions.pageQuestions}
         updateFields={updateForm}
       />,
@@ -67,10 +74,10 @@ function MacathonForm() {
     if (isLastStep) {
       console.warn({ data2: Form });
       setIsLoading(true);
-      const phonePattern = new RegExp("^(0)[0-9]{10}$");
+      const phonePattern = new RegExp("^0[0-9]{10}$");
       if (!phonePattern.test(Form.phone_number)) {
         showErrorToastMessage("Invalid phone number");
-        console.log("Iam Here");
+        console.log("Iam Here phone");
         setIsLoading(false);
         return;
       }
@@ -78,24 +85,13 @@ function MacathonForm() {
       const emailPattern = new RegExp("^\\S+@\\S+\\.\\S+$");
       if (!emailPattern.test(Form.email)) {
         showErrorToastMessage("Invalid email address");
-        console.log("Iam Here");
         setIsLoading(false);
         return;
       }
-      
-      const { team_role, team_number, ...FormWithoutRole} = Form 
-      if(parseInt(team_number) > 3 || parseInt(team_number) < 6){
-        // showErrorToastMessage("Invalid team number");
-        // console.log("Iam Here");
-        // setIsLoading(false);
-        // return;
-      }
-      const API_URL = `https://stp-24.onrender.com/macathon-registeration/add-${team_role
-      .toLowerCase()
-      .split(" ")
-      .join("-")}`;
+
+      const API_URL = `https://stp-24.onrender.com/workshop-registeration/add-participant`;
       try {
-        const response = await axios.post(API_URL, FormWithoutRole);
+        const response = await axios.post(API_URL, Form);
         console.warn({ data: response });
         setIsLoading(false);
         setSuccess(true);
@@ -127,34 +123,28 @@ function MacathonForm() {
         )}
         {!success && (
           <div className="mainForm">
-
-                {steps[currentStepIdx]}
-                <div className="movingButtons">
-                  {!isFirstStep ? (
-                    <MovingButton
-                      onClick={goBack}
-                      title="Previous"
-                    ></MovingButton>
-                  ) : (
-                    <div></div>
-                  )}
-                  {!isLastStep ? (
-                    <button className="movingButton" type="submit">
-                      Next
-                    </button>
-                  ) : (
-                    <>
-                    <PacmanLoader color="#36d7b7" loading={isLoading} size={30} />
-                    {!isLoading && (
-
+            {steps[currentStepIdx]}
+            <div className="movingButtons">
+              {!isFirstStep ? (
+                <MovingButton onClick={goBack} title="Previous"></MovingButton>
+              ) : (
+                <div></div>
+              )}
+              {!isLastStep ? (
+                <button className="movingButton" type="submit">
+                  Next
+                </button>
+              ) : (
+                <>
+                  <PacmanLoader color="#36d7b7" loading={isLoading} size={20} />
+                  {!isLoading && (
                     <button className="movingButton" type="submit">
                       Submit
                     </button>
-                    )}
-                    </>
                   )}
-                </div>
-
+                </>
+              )}
+            </div>
           </div>
         )}
       </form>
@@ -162,4 +152,4 @@ function MacathonForm() {
   );
 }
 
-export default MacathonForm;
+export default WorkshopForm;
