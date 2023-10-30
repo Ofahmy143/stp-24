@@ -254,8 +254,7 @@ export const workshopQuestions = {
       {
         question:
           "Are you willing to take a test as Machine Learning has prerequesite of Python?",
-        type: QuestionTypeEnum.SELECT,
-        choices: ["Yes", "No"],
+        type: QuestionTypeEnum.NORMAL_TEXT,
         name: "q6",
         regex: "",
       },

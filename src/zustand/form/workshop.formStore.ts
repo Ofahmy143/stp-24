@@ -18,7 +18,7 @@ const initialWorkshopData: WorkshopParticipant = {
   workshopSecondPref: "Front-end",
   q1: "",
   q2: "Yes",
-  q3: "Ain Shams University",
+  q3: "Faculty of Engineering Ain Shams University",
   q4: "",
   q5: "",
   q6: "",
