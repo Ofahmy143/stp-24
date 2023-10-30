@@ -138,6 +138,13 @@ form {
   border: 3px solid black;
 }
 
+.loader-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 1700px) {
   .mainForm {
     width: 550px;

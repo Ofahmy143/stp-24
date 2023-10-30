@@ -7,7 +7,7 @@ import { ApplyMultiStepForm } from "./formSteps/multistepForm";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import axios, { AxiosError } from "axios";
-import { HashLoader, SyncLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 import { questions } from "./questions";
 import FormPage from "./formSteps/FormPage";
 import { useMacathonFormStore } from "../../../zustand/form/macathon.formStore";
@@ -93,7 +93,7 @@ function MacathonForm() {
       // @ts-ignore
           showErrorToastMessage(`Error: ${(error as AxiosError).response?.data.message}`);
         }else{
-          showErrorToastMessage(`Error: something went wrong please try again`);
+          showErrorToastMessage(`Error: something went wrong please refresh try again`);
         }
 
         setIsLoading(false);
@@ -137,7 +137,11 @@ function MacathonForm() {
             {steps[currentStepIdx]}
             <div className="movingButtons">
               {!isFirstStep ? (
-                <MovingButton onClick={goBack} title="Previous"></MovingButton>
+                <>
+                {!isLoading && (
+                  <MovingButton onClick={goBack} title="Previous"></MovingButton>
+                )}
+                </>
               ) : (
                 <div></div>
               )}
@@ -147,7 +151,9 @@ function MacathonForm() {
                 </button>
               ) : (
                 <>
-                  <HashLoader color="#36d7b7" loading={isLoading} size={20} />
+                <div className="loader-container">
+                  <HashLoader color="#751231" loading={isLoading} size={25} />
+                </div>
                   {!isLoading && (
                     <button className="movingButton" type="submit">
                       Submit

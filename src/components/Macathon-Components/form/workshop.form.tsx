@@ -6,8 +6,8 @@ import { ApplyMultiStepForm } from "./formSteps/multistepForm";
 // import ThirdFormPage from "./formSteps/ThirdFormPage";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
-import { PacmanLoader } from "react-spinners";
+import axios, { AxiosError } from "axios";
+import { SyncLoader } from "react-spinners";
 import FormPage from "./formSteps/FormPage";
 import { useWorkshopFormStore } from "../../../zustand/form/workshop.formStore";
 import { workshopQuestions, questions } from "./workshop.questions";
@@ -31,10 +31,10 @@ function WorkshopForm() {
         updateFields={updateForm}
       />,
       <FormPage
-      formData={Form}
-      questions={questions.FirstPageQuestions2.pageQuestions}
-      updateFields={updateForm}
-    />,
+        formData={Form}
+        questions={questions.FirstPageQuestions2.pageQuestions}
+        updateFields={updateForm}
+      />,
       <FormPage
         formData={Form}
         questions={questions.SecondPageQuestions.pageQuestions}
@@ -86,7 +86,17 @@ function WorkshopForm() {
         setIsLoading(false);
         setSuccess(true);
       } catch (error) {
-        showErrorToastMessage(`You can't register twice`);
+        if ((error as AxiosError).code === "ERR_BAD_REQUEST") {
+          showErrorToastMessage(
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            `Error: ${(error as AxiosError).response?.data.message}`
+          );
+        } else {
+          showErrorToastMessage(
+            `Error: something went wrong please refresh and try again`
+          );
+        }
         setIsLoading(false);
         console.error((error as Error).message);
       }
@@ -96,18 +106,18 @@ function WorkshopForm() {
   return (
     <>
       <div className="Container">
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="nav">
           <div className="navText">
             <div className="navLine">#STP-24</div>
@@ -142,11 +152,13 @@ function WorkshopForm() {
                   </button>
                 ) : (
                   <>
-                    <PacmanLoader
-                      color="#36d7b7"
-                      loading={isLoading}
-                      size={20}
-                    />
+                    <div className="loader-container">
+                      <SyncLoader
+                        color="#751231"
+                        loading={isLoading}
+                        size={15}
+                      />
+                    </div>
                     {!isLoading && (
                       <button className="movingButton" type="submit">
                         Submit
