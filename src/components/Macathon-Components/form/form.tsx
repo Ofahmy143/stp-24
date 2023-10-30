@@ -53,7 +53,7 @@ function MacathonForm() {
     event.preventDefault();
     goNext();
     if (isLastStep) {
-      // console.warn({ data2: Form });
+      console.warn({ data2: Form });
       setIsLoading(true);
       // const phonePattern = new RegExp("^(0)[0-9]{10}$");
       // if (!phonePattern.test(Form.phone_number)) {

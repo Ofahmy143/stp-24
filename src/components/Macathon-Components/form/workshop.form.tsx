@@ -27,9 +27,14 @@ function WorkshopForm() {
     ApplyMultiStepForm([
       <FormPage
         formData={Form}
-        questions={questions.FirstPageQuestions.pageQuestions}
+        questions={questions.FirstPageQuestions1.pageQuestions}
         updateFields={updateForm}
       />,
+      <FormPage
+      formData={Form}
+      questions={questions.FirstPageQuestions2.pageQuestions}
+      updateFields={updateForm}
+    />,
       <FormPage
         formData={Form}
         questions={questions.SecondPageQuestions.pageQuestions}

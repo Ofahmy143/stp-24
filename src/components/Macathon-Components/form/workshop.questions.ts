@@ -30,7 +30,7 @@ export enum WorkshopEnum {
 }
 
 export const questions: QuestionsObject = {
-  FirstPageQuestions: {
+  FirstPageQuestions1: {
     pageQuestions: [
       {
         question: "full name",
@@ -50,6 +50,10 @@ export const questions: QuestionsObject = {
         name: "phone_number",
         regex: "",
       },
+    ],
+  },
+  FirstPageQuestions2: {
+    pageQuestions: [
       {
         question: "University",
         type: QuestionTypeEnum.NORMAL_TEXT,
@@ -91,7 +95,7 @@ export const questions: QuestionsObject = {
   ThirdPageQuestions: {
     pageQuestions: [
       {
-        question: "How did you hear about us?",
+        question: "Heard about us from?",
         type: QuestionTypeEnum.NORMAL_TEXT,
         name: "q1",
         regex: "",
@@ -106,7 +110,7 @@ export const questions: QuestionsObject = {
       {
         question: "Prefered Place to conduct interview",
         type: QuestionTypeEnum.SELECT,
-        choices: ["Ain Shams University", "Dokki"],
+        choices: ["Faculty of Engineering Ain Shams University", "Dokki"],
         name: "q3",
         regex: "",
       },

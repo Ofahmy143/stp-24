@@ -96,7 +96,7 @@
   .inputBox input:valid ~ span,
   .inputBox input:focus ~ span,
   .has-value span {
-    width: 70% !important;
+    width: 75% !important;
   }
 
   .inputBox span {
