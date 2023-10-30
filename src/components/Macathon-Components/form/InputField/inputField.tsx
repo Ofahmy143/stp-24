@@ -7,12 +7,16 @@ const GenericInput = ({
   name,
   type,
   value,
+  optional,
+  regex,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChange,
 }: {
   question: string;
   name: string;
   type: string;
+  optional: boolean;
+  regex: string
   value: string | number| undefined;
   onChange: (update: Partial<DataType>) => void;
 }) => {
@@ -39,15 +43,16 @@ const GenericInput = ({
   return (
     <div className="inputBox">
       <input
-        required
+        required={optional? false:true}
         name={name}
         type={type}
         value={value}
         onChange={handleChange}
         id={name}
+        pattern={regex? regex : ""}
         className="InputFieldMacathon"
       />
-      <span>{question}</span>
+      <span>{question} {optional? "" : "*"}</span>
     </div>
   );
 };

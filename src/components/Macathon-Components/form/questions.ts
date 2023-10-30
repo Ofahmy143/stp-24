@@ -20,6 +20,7 @@ export type PageQuestion = {
   subChoices?: { [key: string]: string[] };
   placeholder?: string;
   title?: string;
+  optional?: boolean;
 };
 
 export type QuestionsObject = { [key: string]: Question };
@@ -31,15 +32,21 @@ export const questions: QuestionsObject = {
         question: "Team Role?",
         type: QuestionTypeEnum.SELECT,
         name: "team_role",
-        choices: ["Team Leader", "Team Member"],
+        choices: ["Team Leader", "Team Member", "Individual"],
         regex: "",
       },
+      // {
+      //   question:
+      //     "the number of your team members\n (Exclude yourself)",
+      //   type: QuestionTypeEnum.SELECT,
+      //   name: "team_number",
+      //   choices: ["1", "2", "3"],
+      //   regex: "",
+      // },
       {
-        question:
-          "the number of your team members\n (Exclude yourself)",
-        type: QuestionTypeEnum.SELECT,
-        name: "team_number",
-        choices: ["1", "2", "3"],
+        question: "Team Name",
+        type: QuestionTypeEnum.NORMAL_TEXT,
+        name: "team_name",
         regex: "",
       },
     ],
@@ -50,12 +57,6 @@ export const questions: QuestionsObject = {
         question: "full name",
         type: QuestionTypeEnum.NORMAL_TEXT,
         name: "fullname",
-        regex: "",
-      },
-      {
-        question: "Team Name",
-        type: QuestionTypeEnum.NORMAL_TEXT,
-        name: "team_name",
         regex: "",
       },
       {
@@ -90,12 +91,13 @@ export const questions: QuestionsObject = {
         question: "Graduation Year",
         type: QuestionTypeEnum.NUMBER,
         name: "graduation_year",
-        regex: "",
+        regex: "^202[4-9]$",
       },
       {
         question: "CV (Drive Link)",
         type: QuestionTypeEnum.NORMAL_TEXT,
         name: "cv_url",
+        optional: true,
         regex: "",
       },
     ]

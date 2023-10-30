@@ -6,8 +6,8 @@ import { ApplyMultiStepForm } from "./formSteps/multistepForm";
 // import ThirdFormPage from "./formSteps/ThirdFormPage";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
-import { PacmanLoader } from "react-spinners";
+import axios, { AxiosError } from "axios";
+import { HashLoader, SyncLoader } from "react-spinners";
 import { questions } from "./questions";
 import FormPage from "./formSteps/FormPage";
 import { useMacathonFormStore } from "../../../zustand/form/macathon.formStore";
@@ -70,13 +70,13 @@ function MacathonForm() {
       //   setIsLoading(false);
       //   return;
       // }
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      let { team_role, team_number, ...FormWithoutRole } = Form;
 
-      const { team_role, team_number, ...FormWithoutRole } = Form;
-      if (parseInt(team_number) > 3 || parseInt(team_number) < 6) {
-        // showErrorToastMessage("Invalid team number");
-        // console.log("Iam Here");
-        // setIsLoading(false);
-        // return;
+      if(team_role === "Individual") {
+        FormWithoutRole.team_name = "None"
+        team_role = "Team Member"
       }
       const API_URL = `https://stp-24.onrender.com/macathon-registeration/add-${team_role
         .toLowerCase()
@@ -88,9 +88,16 @@ function MacathonForm() {
         setIsLoading(false);
         setSuccess(true);
       } catch (error) {
-        showErrorToastMessage(`You can't register twice`);
+        if((error as AxiosError).code === 'ERR_BAD_REQUEST') {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+          showErrorToastMessage(`Error: ${(error as AxiosError).response?.data.message}`);
+        }else{
+          showErrorToastMessage(`Error: something went wrong please try again`);
+        }
+
         setIsLoading(false);
-        console.error((error as Error).message);
+        console.error((error as Error));
       }
     }
   };
@@ -140,7 +147,7 @@ function MacathonForm() {
                 </button>
               ) : (
                 <>
-                  <PacmanLoader color="#36d7b7" loading={isLoading} size={30} />
+                  <HashLoader color="#36d7b7" loading={isLoading} size={20} />
                   {!isLoading && (
                     <button className="movingButton" type="submit">
                       Submit

@@ -84,7 +84,7 @@
   .inputBox input:valid ~ span,
   .inputBox input:focus ~ span,
   .has-value span {
-    width: 35% !important;
+    width: 55% !important;
   }
 }
 

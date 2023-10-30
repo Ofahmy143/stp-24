@@ -11,5 +11,5 @@ export type MacathonFormData = {
   cv_url: string;
   q1: string;
   q2: string;
-  team_number: string;
+  team_number?: string;
 };
