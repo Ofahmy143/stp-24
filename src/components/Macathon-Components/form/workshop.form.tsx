@@ -139,10 +139,14 @@ function WorkshopForm() {
               {steps[currentStepIdx]}
               <div className="movingButtons">
                 {!isFirstStep ? (
-                  <MovingButton
-                    onClick={goBack}
-                    title="Previous"
-                  ></MovingButton>
+                  <>
+                    {!isLoading && (
+                      <MovingButton
+                        onClick={goBack}
+                        title="Previous"
+                      ></MovingButton>
+                    )}
+                  </>
                 ) : (
                   <div></div>
                 )}
