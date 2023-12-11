@@ -78,6 +78,7 @@ function MacathonForm() {
         FormWithoutRole.team_name = "None"
         team_role = "Team Member"
       }
+      FormWithoutRole.team_name = Form.team_name.trim();
       const API_URL = `https://stp-24.onrender.com/macathon-registeration/add-${team_role
         .toLowerCase()
         .split(" ")
