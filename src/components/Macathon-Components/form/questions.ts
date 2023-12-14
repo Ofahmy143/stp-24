@@ -105,13 +105,14 @@ export const questions: QuestionsObject = {
   FourthPageQuestions: {
     pageQuestions: [
       {
-        question: "How Did you know about the competition?",
-        type: QuestionTypeEnum.ESSAY,
-        name: "q1",
+        question: "Which competition do you want to join?",
+        type: QuestionTypeEnum.SELECT,
+        name: "competition-choice",
+        choices: ["Autonomous Car Race", "Shoplifting Detection"],
         regex: "",
       },
       {
-        question: "Why do you want to join the competition?",
+        question: "How did you know about the competition, and Why do you want to join the competition?",
         type: QuestionTypeEnum.ESSAY,
         name: "q2",
         regex: "",
