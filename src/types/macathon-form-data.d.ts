@@ -7,6 +7,7 @@ export type MacathonFormData = {
   faculty: string;
   graduation_year: number | string;
   team_name: string;
+  competition_name: string;
   team_role: string;
   cv_url: string;
   q1: string;

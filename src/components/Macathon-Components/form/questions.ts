@@ -29,20 +29,19 @@ export const questions: QuestionsObject = {
   FirstPageQuestions: {
     pageQuestions: [
       {
+        question: "Competition Name",
+        type: QuestionTypeEnum.SELECT,
+        name: "competition_name",
+        choices: ["Shoplifting Detection", "Autonomous Car Race"],
+        regex: "",
+      },
+      {
         question: "Team Role?",
         type: QuestionTypeEnum.SELECT,
         name: "team_role",
         choices: ["Team Leader", "Team Member", "Individual"],
         regex: "",
       },
-      // {
-      //   question:
-      //     "the number of your team members\n (Exclude yourself)",
-      //   type: QuestionTypeEnum.SELECT,
-      //   name: "team_number",
-      //   choices: ["1", "2", "3"],
-      //   regex: "",
-      // },
       {
         question: "Team Name",
         type: QuestionTypeEnum.NORMAL_TEXT,
@@ -74,7 +73,7 @@ export const questions: QuestionsObject = {
     ],
   },
   ThirdPageQuestions: {
-    pageQuestions :[ 
+    pageQuestions: [
       {
         question: "University",
         type: QuestionTypeEnum.NORMAL_TEXT,
@@ -100,7 +99,7 @@ export const questions: QuestionsObject = {
         optional: true,
         regex: "",
       },
-    ]
+    ],
   },
   FourthPageQuestions: {
     pageQuestions: [

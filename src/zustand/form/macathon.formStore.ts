@@ -11,6 +11,7 @@ const initialMacathonData: MacathonFormData = {
   email: "",
   team_name: "",
   team_role: "Team Member",
+  competition_name: "Shoplifting Detection",
   faculty: "",
   graduation_year: "",
   cv_url: "",
@@ -32,7 +33,7 @@ export const useMacathonFormStore = create<MacathonFormStore>((set) => ({
     }
 
     if (update["team_name"] === "None" && update.team_role === "Individual" && flag === 1) {
-      console.log({ update });
+      // console.log({ update });
     } else {
       set((state) => ({ Form: { ...state.Form, ...update } }));
     }
